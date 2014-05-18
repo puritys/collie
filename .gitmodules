@@ -1,0 +1,3 @@
+[submodule "lib/phpunit/php-webdriver"]
+	path = lib/phpunit/php-webdriver
+	url = git@github.com:puritys/php-webdriver.git
