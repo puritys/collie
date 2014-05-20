@@ -1,0 +1,18 @@
+{
+    "process": [
+        {
+            "controller": "openUrl",
+            "param": {
+                "url": "http://www.puritys.me/docs-blog/article-49-%E6%B8%AC%E8%A9%A6%E7%94%A8%E6%96%87%E7%AB%A0.html"
+            }
+        },
+        {
+            "controller": "fillOutForm",
+            "param": {
+                "form": {
+                    "reply" : "test"
+                } 
+            }
+        }
+    ]
+}
