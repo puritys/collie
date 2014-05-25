@@ -7,6 +7,7 @@ class openUrlController extends collieBasicController {
         $this->url = $this->param["url"];
         $this->driver->get($this->url);
         $this->originalUrl = $this->driver->getCurrentURL();
+
         if ($this->url !== $this->originalUrl) {
             $this->isSameUrl = false;
         }
