@@ -1,0 +1,28 @@
+<div class="module-category-edit-form">
+
+    <div class="mod-source">
+        <form action="index.php?page=categorySubmit" method="post">
+            <input type="hidden" name="action" value="{{action}}" />
+            <input type="hidden" name="id" value="{{category.categoryId}}" />
+            <input type="hidden" name="referer" value="{{referer}}">
+
+            <div class="form-group">
+                <label for="fm-parent-id">Parent cateogry</label>
+                <select name="parentId" id="fm-content"  class="form-control">
+                    <option value="0">Please select a parent category</option>
+                    {{#each categoryOption}}
+                        <option value="{{categoryId}}" {{#if on}}selected{{/if}}>{{name}}</option>
+                    {{/each}}
+                </select>
+            </div>
+
+
+            <div class="form-group">
+                <label for="fm-name">Name</label>
+                <input name="name" id="fm-name"  class="form-control" value="{{category.name}}"/>
+            </div>
+
+            <button type="submit" class="btn btn-default">Submit</button
+        </form>
+    </div>
+</div>

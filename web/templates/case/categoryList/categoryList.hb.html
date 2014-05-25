@@ -1,0 +1,59 @@
+<div class="module-category">
+<div class="case-wrap">
+    <a href="index.php?page=categoryForm" class="btn btn-default">Create Categoey</a>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">Category List</div>
+    <table class="case-list-wrap table table-striped">
+        <thead class="caption-wrap head">
+        <tr>
+            <th>#</th>
+            <th>Parent Category</th>
+            <th>Name</th>
+            <th>Number of case </th>
+            <th>Run All Case</th>
+            <th>Last Report</th>
+            <th>Edit</th>
+            <th>Remove</th>
+
+        </tr>
+        </thead>
+
+        <tbody class="tbody">
+        {{#each list}}
+            <tr>
+                <td>{{id}}</td>
+                <td>{{parentName}}</td>
+                <td>{{name}}</td>
+                <td>{{{caseQty}}}</td>
+                <td>{{#if caseQty}}<a href="{{urlCaseRun}}" target="_run" class="btn btn-default">Run</a>{{/if}}</td>
+                <td>
+                {{#if executeId}}
+                    {{#if isPass}}
+                        <span class="glyphicon glyphicon-ok green-light"></span>
+                    {{/if}}
+                    {{#if isPassSome}}
+                        <span class="glyphicon glyphicon-warning-sign yellow-light"></span>
+                    {{/if}}
+
+                    {{#if isFail}}
+                        <span class="glyphicon glyphicon-remove red-light"></span>
+                    {{/if}}
+                    <a href="{{urlLastReport}}" target="_log" class="btn btn-default">Last Report</a>
+                {{/if}}
+                </td>
+
+                <td><a href="{{urlEdit}}" class="btn-edit glyphicon glyphicon-pencil"></a></td>
+                <td><a href="{{urlDelete}}" class="btn-delete glyphicon glyphicon-remove" data-name="{{title}}"></a></td>
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+    <div class="page-wrap">
+        {{> ../../common/pages/pages.hb.html}}
+    </div>
+  </div>
+</div>
+
+ 

@@ -1,0 +1,80 @@
+<div class="panel panel-default">
+{{#if isCreate}}
+    <div class="panel-heading">Create New Case</div>
+{{else}}
+    <div class="panel-heading">Edit Case: {{title}}</div>
+{{/if}}
+</div>
+
+<form action="index.php?page=caseSubmit" class="case-form" method="POST" role="form">
+    <input type="hidden" name="action" value="{{action}}"/>
+    <input type="hidden" name="caseId" value="{{caseId}}"/>
+    <input type="hidden" name="type" value="advance"/>
+    <input type="hidden" name="referer" value="{{referer}}"/>
+    <textarea class="hidden" type="hidden" name="descriptor">{{{descriptor}}}</textarea>
+    <div class="config-text hidden">{{{configText}}}</div>
+    <div class="form-basic-wrap">
+        <div class="form-group">
+            <label for="title">Case Name</label>
+            <input class="form-control" value="{{title}}" id="title" name="title" >
+        </div>
+        <div class="form-group">
+            <label for="content">Case content</label>
+            <textarea class="form-control" id="content" name="content" rows="3">{{content}}</textarea>
+        </div>
+        <div class="form-group">
+            <label for="content">Category</label>
+            <div class="multiple-option-selection">
+                <select multiple="multiple" class="form-control" class="all-category" name="category">
+                {{#if allCates}}
+                {{#each allCates}}
+                    <option value="{{category_id}}" {{#if on}}selected{{/if}}>{{name}}</option>
+                {{/each}}
+                {{/if}}
+                </select>
+            </div>
+        </div>
+
+    </div>
+</form>
+
+
+
+<div class="main-wrap yui3-g">
+
+    <div class="yui3-u-1">
+        <h2>Case Controller</h2>
+    </div>
+
+    <div class="controller-wrap yui3-u-1-3">
+        <div class="yui3-g">
+            <div class="yui3-u-1">
+                <div class="form-group search-controller">
+                    <input type="text" name="searchText" value="{{searchText}}" class="form-control" />
+                    <a href="#" class="btn-search"><span class="glyphicon glyphicon-search"></span></a>
+                </div>
+            </div>
+            <div class="yui3-u-1">
+                <ul class="list-group">
+                {{#each controller}}
+                    <li class="list-group-item controller">{{name}} 
+                        <a href="#" class="btn-add glyphicon glyphicon-arrow-right" data-id="{{id}}" data-file="{{file}}" data-name="{{name}}" data-type="{{type}}"></a>
+                    </li>
+                {{/each}}
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="yui3-u-2-3">
+        <div class="controller-object-wrap">
+            <div class="controller-object">
+            </div>
+            <button type="submit" class="btn btn-default btn-submit">Submit</button>
+        </div>
+    </div>
+
+
+
+</div>
+

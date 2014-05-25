@@ -1,0 +1,21 @@
+<div class="yui3-g setting-selected-wrap">
+    <form action="index.php?page=settingChange" method="get">
+        <input type="hidden" name="page" value="settingChange" />
+        <div class="yui3-u">
+            <div class="caption">Setting:</div>
+        </div>
+        <div class="yui3-u">
+            <select name="user-setting">
+            {{#each setting}}
+                <option value="{{value.config_id}}" {{#if isSelected}} selected{{/if}}>{{value.name}}</option>
+            {{/each}}
+            </select>
+        </div>
+    </form>
+</div>
+<ul class="nav nav-tabs yui3-u-1">
+    {{#each menu}}
+        <li {{#if on}}class="active"{{/if}}><a href="{{link}}">{{name}}</a></li>
+    {{/each}}
+</ul>
+

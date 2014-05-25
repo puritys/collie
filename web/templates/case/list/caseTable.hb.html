@@ -1,0 +1,49 @@
+    <table class="case-list-wrap table table-striped">
+        <thead class="caption-wrap head">
+        <tr>
+            <th>#</th>
+            <th>Case Name</th>
+            <th>Content</th>
+            <th>Descriptor</th>
+            <th>Edit</th>
+            <th>Run Case</th>
+            <th>Last Report</th>
+            <th>Remove</th>
+        </tr>
+        </thead>
+
+        <tbody class="tbody">
+        {{#each caseList}}
+            <tr class="">
+                <td>{{case_id}}</td>
+                <td>{{title}}</td>
+                <td >{{content}}</td>
+
+                <td><a href="{{urlDescriptor}}" target="_des" class="glyphicon glyphicon-book"></a></td>
+                <td><a href="{{urlEdit}}" class="btn-edit glyphicon glyphicon-pencil"></a></td>
+                <td><a href="{{urlCaseRun}}" target="_blank" class="btn btn-default">Run</a></td>
+                <td>
+                {{#if reportId}}
+                    <a href="{{urlLastReport}}" target="_blank" >
+                    {{#if isPass}}
+                        <span class="glyphicon glyphicon-ok green-light"></span>
+                    {{/if}}
+                    {{#if isPassSome}}
+                        <span class="glyphicon glyphicon-warning-sign yellow-light"></span>
+                    {{/if}}
+
+                    {{#if isFail}}
+                        <span class="glyphicon glyphicon-remove red-light"></span>
+                    {{/if}}
+                    Log</a>
+                {{/if}}
+                </td>
+                <td><a href="{{urlDelete}}" class="btn-delete glyphicon glyphicon-remove" data-name="{{title}}"></a></td>
+
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+    <div class="page-wrap">
+        {{> /../../common/pages/pages.hb.html}}
+    </div>

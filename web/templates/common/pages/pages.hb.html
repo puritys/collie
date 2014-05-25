@@ -1,0 +1,9 @@
+{{#if pages}}
+<ul class="pagination pagination-lg">
+  <!--li><a href="#">&laquo;</a></li-->
+    {{#each pages.pages}}
+        <li {{#if on}}class="active"{{/if}}><a href="{{link}}" >{{page}}</a></li>
+    {{/each}}
+  <!--li><a href="#">&raquo;</a></li-->
+</ul>
+{{/if}}

@@ -1,0 +1,20 @@
+<div class="module-case">
+<div class="case-wrap">
+    <form action="index.php" class="search-form form-inline" method="GET">
+        <input type="hidden" name="page" value="caseList" />
+        <div class="form-group">
+            <input type="text" name="searchText" value="{{searchText}}" class="form-control" /><a href="#" class="btn-search"><span class="glyphicon glyphicon-search"></span></a>
+        </div>
+    </form>
+    <a href="index.php?page=caseForm" class="btn btn-default">Create New Case</a>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">Case List</div>
+  <div class="case-table-wrap">  
+      {{> caseTable.hb.html}}
+  </div>
+</div>
+
+
+</div>
