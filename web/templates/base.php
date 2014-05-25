@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="auction ua-desktop ua-chrome ua-chrome30 ua-Mac" lang="zh-tw">
+<html lang="zh-tw">
 <head>    
     <title>Easy Tester</title>
     <meta charset="utf-8" />
