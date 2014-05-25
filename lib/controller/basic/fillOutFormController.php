@@ -1,6 +1,20 @@
 <?php
 
+require_once PATH_CONTROLLER . '/basic/collieBasicController.php';
 class fillOutFormController extends collieBasicController {
+
+    public $formParam = array (
+        "form" => array(
+            "label" => "Fill up form",
+            "type"  => "input", //key-value
+//            "type": "select",
+//            "options": [
+//                ["NONE", "Please select a option"],
+//                ["xx1", "select 1"],
+//            ],
+            "hint" => "Type a url like example: http://www.purity.me/",
+        )
+    );
 
     public function main () {
 
