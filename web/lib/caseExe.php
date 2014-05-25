@@ -1,6 +1,7 @@
 <?php
 require_once "caseSql.php";
-require_once 'arrowRunner.php';
+//require_once 'arrowRunner.php';
+
 class caseExe extends caseSql 
 {
     public $dirPath = ""; //the descriptor tmp file  dir
@@ -20,7 +21,7 @@ class caseExe extends caseSql
         }
 
         $this->formPath = PATH_PROJECT . '/web';
-        $this->arrow = new arrowRunner();
+//        $this->arrow = new arrowRunner();
     }
 
     public function getCase($args = "") 

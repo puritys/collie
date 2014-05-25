@@ -103,6 +103,17 @@ class dataUtil
         return $cases;
     }/*}}}*/
 
+    static function transformController_to_HandlebarForamt($controller)
+     {/*{{{*/
+        $retval = array();
+        foreach ($controller as $key => $val) {
+            $retval[] = array(
+                "name" => $key,
+            );
+        }
+        return $retval;
+    }/*}}}*/
+
 
     static function convertPages($args) 
     {/*{{{*/

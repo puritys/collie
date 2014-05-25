@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html  lang="zh-tw">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collie, A automation test tool.</title>
+    <link href="<?php echo URL_HOME . "/css/bootstrap/css/bootstrap.css" ?>" rel="stylesheet" type="text/css"/>
+    <link href="<?php echo URL_HOME . "/css/yui-grid.css" ?>" rel="stylesheet" type="text/css"/>
+
+    <link href="<?php echo URL_HOME . "/css/easyYUI.css" ?>" rel="stylesheet" type="text/css"/>
+
+    <link href="<?php echo URL_HOME . "/css/easyTester.css" ?>" rel="stylesheet" type="text/css"/>
+
+    <script src="http://yui.yahooapis.com/3.12.0/build/yui/yui-min.js"></script>
+</head>
+
+<body class="yui3-skin-sam"  dir="ltr">
+
+<div class="wrap yui3-g">
+    <div id="hd" class="yui3-g">
+<?php
+    echo $templateObj->renderLayout($header);
+
+?>
+    </div>
+    <div id="bd" class="yui3-g">
+<?php
+    echo $templateObj->renderLayout($body);
+?>
+    </div>
+
+    <div id="ft" class="yui3-g">
+<?php
+    echo $templateObj->renderLayout($footer);
+
+?>
+    </div>
+
+</div>
+
+<script src="js/easyYUI.js"></script>
+
+<script src="js/controllerConfig.js"></script>
+<script src="js/ET.js"></script>
+<script src="js/advanceUI.js"></script>
+<script>
+YUI().use("node", "easyYUI", "ET", "advanceUI", function (Y) {
+
+});
+
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+<div class="module-edit-form">
+
+    <div class="mod-source">
+        <form action="index.php?page=settingSubmit" method="post">
+            <input type="hidden" name="action" value="{{action}}" />
+            <input type="hidden" name="configId" value="{{id}}" />
+
+            <div class="form-group">
+                <label for="fm-name">Setting Name</label>
+                <input name="name" id="fm-name"  class="form-control" value="{{name}}"/>
+            </div>
+            <div class="form-horizontal setting-wrap">
+                <h2>Setting Value</h2>
+                <p>Please check the default setting of test case and edit the value of you want.</p>
+                <div class="input-wrap">
+                <div class="form-group">
+                  <label for="input{{key}}" class="col-sm-2 control-label">Key</label>
+                  <div class="caption-value">
+                    Value
+                  </div>
+                </div>
+
+                {{#each configInput}}
+                <div class="form-group">
+                  <label for="input{{key}}" class="col-sm-2 control-label">{{key}}</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="input{{key}}" name="config-{{key}}" value="{{value}}">
+                  </div>
+                </div>
+                {{/each}}
+                </div>
+            </div>
+            <div class="submit-wrap">
+                <button type="submit" class="btn btn-default">Submit</button>
+            </div>
+        </form>
+    </div>
+
+</div>

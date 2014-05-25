@@ -1,0 +1,8 @@
+{
+    "openUrl": {
+        "filePath": "basic/openUrlController.php"
+    },
+    "fillOutForm": {
+        "filePath": "basic/fillOutFormController.php"
+    }
+}

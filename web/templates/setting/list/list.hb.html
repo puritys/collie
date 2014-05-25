@@ -1,0 +1,35 @@
+<div class="module-setting-list">
+<div class="case-wrap">
+    <a href="index.php?page=settingForm" class="btn btn-default">Create New Setting</a>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">Setting List</div>
+    <table class="case-list-wrap table table-striped">
+        <thead class="caption-wrap head">
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Setting Content</th>
+            <th>Edit</th>
+            <th>Remove</th>
+        </tr>
+        </thead>
+
+        <tbody class="tbody">
+        {{#each setting}}
+            <tr>
+                <td>{{config_id}}</td>
+                <td>{{name}}</td>
+                <td><a href="index.php?page=settingList&action=read&id={{config_id}}" target="_blank">setting</a></td>
+                <td><a href="index.php?page=settingForm&action=edit&id={{config_id}}" class="btn-edit glyphicon glyphicon-pencil"></a></td>
+                <td><a href="index.php?page=settingRemove&id={{config_id}}" class="btn-delete glyphicon glyphicon-remove" data-name="{{name}}"></a></td>
+
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+  </div>
+</div>
+
+
