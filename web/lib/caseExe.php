@@ -87,6 +87,7 @@ class caseExe extends caseSql
         );
     }/*}}}*/
 
+    //Support arrow(Node.js)
     public function createDescriptor($data) 
     {/*{{{*/
         $descriptor = $data['descriptor'];

@@ -36,50 +36,50 @@
         </div>
 
     </div>
+
+
+
+    <div class="main-wrap yui3-g">
+
+        <div class="yui3-u-1">
+            <h2>Case Controller</h2>
+        </div>
+
+        <div class="controller-wrap yui3-u-1-3">
+            <div class="yui3-g">
+                <div class="yui3-u-1">
+                    <div class="form-group search-controller">
+                        <input type="text" name="searchText" value="{{searchText}}" class="form-control" />
+                        <a href="#" class="btn-search"><span class="glyphicon glyphicon-search"></span></a>
+                    </div>
+                </div>
+                <div class="yui3-u-1">
+                    <div class="form-group">
+                        <select class="group-of-controller form-control">
+                            <option value="basic">basic</option>
+                        </select>
+                    </div>
+                    <ul class="list-group">
+                    {{#each controller}}
+                        <li class="list-group-item controller">{{name}} 
+                            <a href="#" class="btn-add glyphicon glyphicon-arrow-right" data-id="{{id}}" data-file="{{file}}" data-name="{{name}}" data-type="{{type}}"></a>
+                        </li>
+                    {{/each}}
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="yui3-u-2-3">
+            <div class="controller-object-wrap">
+                <div class="controller-object">
+                </div>
+                <button type="submit" class="btn btn-default btn-submit">Submit</button>
+            </div>
+        </div>
+
+
+
+    </div>
+
 </form>
-
-
-
-<div class="main-wrap yui3-g">
-
-    <div class="yui3-u-1">
-        <h2>Case Controller</h2>
-    </div>
-
-    <div class="controller-wrap yui3-u-1-3">
-        <div class="yui3-g">
-            <div class="yui3-u-1">
-                <div class="form-group search-controller">
-                    <input type="text" name="searchText" value="{{searchText}}" class="form-control" />
-                    <a href="#" class="btn-search"><span class="glyphicon glyphicon-search"></span></a>
-                </div>
-            </div>
-            <div class="yui3-u-1">
-                <div class="form-group">
-                    <select class="group-of-controller form-control">
-                        <option value="basic">basic</option>
-                    </select>
-                </div>
-                <ul class="list-group">
-                {{#each controller}}
-                    <li class="list-group-item controller">{{name}} 
-                        <a href="#" class="btn-add glyphicon glyphicon-arrow-right" data-id="{{id}}" data-file="{{file}}" data-name="{{name}}" data-type="{{type}}"></a>
-                    </li>
-                {{/each}}
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <div class="yui3-u-2-3">
-        <div class="controller-object-wrap">
-            <div class="controller-object">
-            </div>
-            <button type="submit" class="btn btn-default btn-submit">Submit</button>
-        </div>
-    </div>
-
-
-
-</div>
-
