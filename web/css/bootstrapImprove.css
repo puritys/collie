@@ -1,0 +1,39 @@
+div.table {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+div.table-striped .tbody .row {
+    margin: 0;
+}
+
+div.table-striped .tbody .row:nth-child(odd),
+div.table-striped .tbody .row:nth-child(odd) {
+    background-color: #f9f9f9;
+}
+
+div.table .head{
+  font-weight: bold;
+  vertical-align: bottom;
+
+}
+
+
+div.table .head .col,
+div.table .col {
+    padding: 8px;
+    line-height: 20px;
+    text-align: left;
+    vertical-align: top;
+    border-right: 1px solid #dddddd;
+    border-left: 1px solid #dddddd;
+
+    display: inline-block;
+}
+
+
+
+.table .tbody {
+  border-top: 2px solid #dddddd;
+}
+

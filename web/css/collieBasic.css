@@ -1,0 +1,202 @@
+body {
+    font-size:14px;
+}
+.wrap {
+    width: 97%;
+    margin: 0 auto;
+    padding: 0 3%; 
+}
+
+#hd {
+    margin: 10px 0 20px 0;
+}
+
+.case-wrap {
+    text-align: right;
+    margin: 5px 0 10px 0; 
+}
+
+.case-wrap .search-form {
+    float: left;
+    width: 220px;
+}
+.case-wrap .form-group {
+    width: 100%;
+    padding-left: 30px;
+    letter-spacing: 0px;
+}
+.case-wrap .search-form input {
+    margin-left: -30px;
+    width: 100%;
+}
+
+.case-wrap .search-form .glyphicon-search {
+    display: inline-block;
+    width: 30px;
+}
+
+.case-table-wrap .table {
+    margin-bottom: 0;
+}
+.page-wrap {
+
+    border-top: 1px solid #DDD;
+    text-align: center;
+}
+.setting-wrap {
+    min-height: 300px;
+}
+
+.controller-wrap .btn-add{
+    float: right;
+    width: 30px;
+}
+.controller-wrap li{
+    cursor: pointer;
+}
+.controller-wrap .search-controller {
+    padding-left: 30px;
+    letter-spacing: -0.31em;
+    /* Webkit: collapse white-space between units */
+    *letter-spacing: normal;
+    /* reset IE < 8 */
+    *word-spacing: -0.43em;
+    /* IE < 8: collapse white-space between units */
+    text-rendering: optimizespeed;
+    /* Webkit: fixes text-rendering: optimizeLegibility */
+}
+.controller-wrap .search-controller input{
+    width: 100%;
+    margin-left: -30px;
+    display: inline-block;
+    letter-spacing: normal;
+    word-spacing: normal;
+    vertical-align: top;
+    text-rendering: auto;
+}
+.controller-wrap .search-controller a{
+    padding: 8px 0 0 5px;
+    width: 25px;
+    display: inline-block;
+    letter-spacing: normal;
+    word-spacing: normal;
+    vertical-align: top;
+    text-rendering: auto;
+}
+
+.controller-object-wrap {
+    padding: 0 0 0 20px;
+}
+.desc-controller {
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    overflow: hidden;
+}
+
+.desc-controller .content {
+    padding: 20px 10px;
+}
+
+.desc-controller .content .value-node{
+    padding: 0px 20px;
+}
+
+
+.desc-controller .title-bar {
+    background: #f2f2f2;
+    padding: 10px; 
+    font-weight: bold;
+    height: 55px;
+}
+
+.desc-controller .title-bar .name {
+    cursor: move;
+    padding-top: 6px;
+    min-width: 300px;
+    min-height: 50px;
+}
+
+.desc-controller .form-group{
+/*    padding: 10px;*/
+}
+.mod-advance .panel-default {
+    margin-top: 0px;
+}
+
+.mod-advance .main-wrap {
+    padding: 0px 0 30px 0;
+}
+
+.case-form {
+    padding: 10px 10px;
+    border: 1px solid #ddd;
+    margin: 0 0 20px 0;
+}
+
+.setting-wrap .input-wrap{
+    margin-left: 0;
+    margin-right: 0;
+    background-color: #fff;
+    border-width: 1px;
+    border-color: #ddd;
+    border-radius: 4px 4px 0 0;
+    box-shadow: none;
+    border-style: solid;
+    padding: 25px 10px 10px 0;
+}
+
+.setting-wrap .caption-value {
+    padding: 7px 0 0 225px;
+}
+.setting-selected-wrap {
+    text-align: right;
+    float: right;
+    margin-bottom: 10px;
+    width: 220px;
+    zoom: 1;
+}
+
+.setting-selected-wrap ~ul {
+    clear: both;
+}
+
+.setting-selected-wrap .caption {
+    margin-right: 8px;
+}
+
+.controller-object-wrap .btn-delete {
+    margin-left: 15px;
+}
+.fl-right-end {
+    float: right;
+    width: 160px;
+}
+
+.red-light {
+    color: #a00;
+}
+
+.green-light {
+    color: #0a0;
+}
+
+.yellow-light {
+    color: #FDC208;
+}
+.controller-object .help-block {
+    padding: 5px 0px;
+}
+
+.multiple-option-selection select {
+    color: #000;
+    font-size: 18px;
+    width: 300px;
+    height: 300px;
+}
+
+.report-number {
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #efefef;
+    font-weight: bold;
+}
