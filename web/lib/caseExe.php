@@ -1,6 +1,8 @@
 <?php
 require_once "caseSql.php";
 //require_once 'arrowRunner.php';
+require_once PATH_PROJECT . "/lib/controller/basic/collieBasicController.php";
+require_once PATH_PROJECT . "/lib/collieBasic/runner.php";
 
 class caseExe extends caseSql 
 {
@@ -15,7 +17,7 @@ class caseExe extends caseSql
         } else {
             $this->dirPath = PATH_DIR_RUN;
         }
-//error_log("dirPath = " . $this->dirPath);
+
         if (!is_dir($this->dirPath))  {
             mkdir($this->dirPath);
         }
@@ -63,22 +65,28 @@ class caseExe extends caseSql
             $path = $path .'/'. $reportDir;
             if (!is_dir($path)) mkdir($path);
         }
-       
 
-        $fileData = $path . "/tmp1.json";
-        $dataC = '"config": {}';
-        file_put_contents($fileData, $dataC);
+        $config['PATH_CASE_RESULT'] = $path;
+        $config['URL_CASE_RESULT'] = URL_DIR_RUN .'/' . $dirname;
 
-        $descriptor = $this->createDescriptor($data);
-        $file = $path . "/descriptor.json";
-        file_put_contents($file, json_encode($descriptor));
+        $descriptor = json_decode($data['descriptor'], true);
+        $scenario = $descriptor['scenario'];
+        $runBook = array(
+            "process" => $scenario,
+        );
+        $runner = new runner(PATH_PROJECT . "/lib/controller/");      
 
 
-        $configFilePath = $path . "/defaultConfig.json";
-        $this->arrow->seleniumHost = $config['seleniumHost'];
-        $this->arrow->saveConfig($configFilePath, $config);
+        $runner->loadControllerList(PATH_CONTROLLER_LIST);
+        $runner->loadRunBook($runBook);
+        $runner->loadConfig($config);
 
-        list($total, $passed, $failed) = $this->arrow->runCase($fileData, "", "noId", $readLog);
+
+        $runner->startDriver();
+        list($total, $passed, $failed) = $runner->run();
+        $runner->closeDriver();
+
+
         return array(
             "dirname" => $dirname,
             "total" => $total,
@@ -86,6 +94,10 @@ class caseExe extends caseSql
             "failed" => $failed,
         );
     }/*}}}*/
+
+    public function createRunBook($data) {
+
+    }
 
     //Support arrow(Node.js)
     public function createDescriptor($data) 

@@ -13,6 +13,8 @@ define("PATH_DIR_RUN", PATH_WEB . "/runTmp"); // descriptor temp dir , It will g
 define("PATH_CONTROLLER_DEAFULT_SETTING", PATH_PROJECT . '/conf/controllerDefaultSetting.json');
 define("PATH_CONTROLLER_LIST", PATH_PROJECT . "/conf/controllerList.json");
 
+define("URL_DIR_RUN", URL_HOME . "/runTmp"); 
+
 
 // mysql
 define("MYSQL_HOST", "localhost");
