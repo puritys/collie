@@ -14,6 +14,7 @@ define("PATH_CONTROLLER_DEAFULT_SETTING", PATH_PROJECT . '/conf/controllerDefaul
 define("PATH_CONTROLLER_LIST", PATH_PROJECT . "/conf/controllerList.json");
 
 define("URL_DIR_RUN", URL_HOME . "/runTmp"); 
+define('TIMEZONE', 'Asia/Taipei');
 
 
 // mysql
