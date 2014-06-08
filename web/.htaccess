@@ -1,0 +1,3 @@
+<FilesMatch "\.(inc|xml)$">
+    deny from all
+</FilesMatch>
