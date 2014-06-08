@@ -5,14 +5,38 @@ class testAssert {
     public $failedNumber = 0;
     public $totalNumber = 0;
     public $failedLog = array();
-    public function assertEquals($val1, $val2, $reason) {
+    public function assertEquals($expect, $actual, $failReason) {
         $this->totalNumber++;
-        if ($val1 == $val2) {
+        if ($expect == $actual) {
+            $this->passedNumber++;
+            return true;
+        }
+        $failReason = <<<HTML
+$failReason
+These two value is not equal.
+Expect Value: $expect
+Actual Value: $actual
+HTML;
+        $this->failedLog[] = $failReason;
+        $this->failedNumber++;
+        return false;
+    }
+
+    public function assertPartialEquals($expect, $actual, $failReason) {
+        $this->totalNumber++;
+        if (strpos($actual, $expect) !== false) {
             $this->passedNumber++;
             return true;
         }
 
-        $this->failedLog[] = $reason;
+        $failReason = <<<HTML
+$failReason
+Actual value is not include expect value.
+Expect Value: $expect
+Actual Value: $actual
+HTML;
+
+        $this->failedLog[] = $failReason;
         $this->failedNumber++;
         return false;
     }

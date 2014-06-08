@@ -41,6 +41,10 @@ class collieBasicController {
         return $this->testAssert->assertEquals($val1, $val2, $reason);
     }
 
+    public function assertPartialEquals($expect, $actual, $reason) {
+        return $this->testAssert->assertPartialEquals($expect, $actual, $reason);
+    }
+
     public function assertTrue($val1, $reason) {
         return $this->testAssert->assertTure($val1);
     }
