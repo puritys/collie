@@ -1,12 +1,1 @@
-{
-    "openUrl": {
-        "filePath": "basic/openUrlController.php"
-    },
-    "fillOutForm": {
-        "filePath": "basic/fillOutFormController.php"
-    },
-    "testContent": {
-        "filePath": "test/testContentController.php"
-    }
-
-}
+{"testContent":{"filePath":"\/www\/dev\/collie\/web\/..\/lib\/controller\/test\/testContentController.php"},"fillOutForm":{"filePath":"\/www\/dev\/collie\/web\/..\/lib\/controller\/basic\/fillOutFormController.php"},"openUrl":{"filePath":"\/www\/dev\/collie\/web\/..\/lib\/controller\/basic\/openUrlController.php"}}

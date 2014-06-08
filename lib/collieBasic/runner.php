@@ -77,7 +77,7 @@ class runner {
                 error_log("Mission controller " . $controllerName);
                 continue;
             }
-            require_once $this->controllerBasePath . $controllerBaseInfo['filePath'];
+            require_once $controllerBaseInfo['filePath'];//$this->controllerBasePath . $controllerBaseInfo['filePath'];
             $classname = $controllerName . "Controller";
             error_log("Run : " . $classname);
             $control = new $classname($this->driver, $controller['params'], $this->config);
