@@ -3,7 +3,7 @@ require dirname(__FILE__) . "/../config.php";
 
 //grant all on collie.* to 'collie'@'localhost' identified by 'collie';
 //drop user root@'localhost'
-//create database easyTester;
+//create database collie;
 $db = new PDO('mysql:host=' . MYSQL_HOST .';dbname=' . MYSQL_DB, MYSQL_USER, MYSQL_PSWD);
 
 $case = "
@@ -57,13 +57,14 @@ try {
 }
 
 /******insert test data**********/
-$des = file_get_contents('/home/puritys/easyTester/dev/descriptor.json');
+/*$des = file_get_contents('criptor.json');
 $sql = "insert into testCase(`title`, `content`,`descriptor`, `create_time`) values(
         'Test Case',
         'content ',
         '" . $des . "', 
         '". date("Y/m/d H:i:s") .
         "')";
+*/
 /*$result = $db->query($sql);
 $result = $db->query($sql);
 $result = $db->query($sql);
