@@ -83,15 +83,20 @@ class caseExe extends caseSql
 
 
         $runner->startDriver();
-        list($total, $passed, $failed) = $runner->run();
+        $res = $runner->run();
         $runner->closeDriver();
 
+        $total = $res['totalNumber'];
+        $passed = $res['passedNumber'];
+        $failed = $res['failedNumber'];
+        $failedLog = $res['failedLog'];
 
         return array(
             "dirname" => $dirname,
             "total" => $total,
             "passed" => $passed,
             "failed" => $failed,
+            "failedLog" => $failedLog,
         );
     }/*}}}*/
 

@@ -4,5 +4,9 @@
     },
     "fillOutForm": {
         "filePath": "basic/fillOutFormController.php"
+    },
+    "testContent": {
+        "filePath": "test/testContentController.php"
     }
+
 }

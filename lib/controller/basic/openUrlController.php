@@ -14,7 +14,7 @@ class openUrlController extends collieBasicController {
             "hint" => "Type a url like example: http://www.purity.me/",
         )
     );
-    public function main () {
+    public function main ($config, $param) {
         $this->url = $this->param["url"];
         $this->driver->get($this->url);
         $this->originalUrl = $this->driver->getCurrentURL();
@@ -31,6 +31,7 @@ class openUrlController extends collieBasicController {
     public function checkIsComplete () {
         $script = 'return document.readyState';
         $status = $this->driver->executeScript($script);
+        $this->getScreen();
         if ($status == "complete") {
             return true;
         }

@@ -1,6 +1,8 @@
 <?php
 require_once "../lib/phpunit/php-webdriver/lib/__init__.php";
 require_once "../lib/phpunit/core/basic.php";
+require_once PATH_PROJECT . '/lib/collieBasic/testAssert.php';
+$GLOBALS['testAssert'] = new testAssert();
 
 class runner {
     public $controllerBasePath;
@@ -9,6 +11,7 @@ class runner {
     public $driver;
     public function __construct($basePath) {
         $this->controllerBasePath = $basePath;
+        $this->assert = $GLOBALS['testAssert'];
     }
 
     public function startDriver() {/*{{{*/
@@ -32,13 +35,21 @@ class runner {
     }/*}}}*/
 
     public function loadRunBook($file) {
-        $content = file_get_contents($file);
-        $this->runBook = json_decode($content, true);
+        if (is_array($file)) {
+            $this->runBook = $file;
+        } else {
+            $content = file_get_contents($file);
+            $this->runBook = json_decode($content, true);
+        }
     }
 
     public function loadConfig($file) {
-        $content = file_get_contents($file);
-        $this->config = json_decode($content, true);
+        if (is_array($file)) {
+            $this->config = $file;
+        } else {
+            $content = file_get_contents($file);
+            $this->config = json_decode($content, true);
+        }
     }
 
     public function getControllerBaseInfo($name) {/*{{{*/
@@ -49,21 +60,32 @@ class runner {
         if (isset($this->controllerList[$name . "Controller"])) {
             return $this->controllerList[$name . "Controller"];
         }
-        return null;
+        return "";
     }/*}}}*/
 
     /**
     * Start to run selenium controller to send command.
     */
     public function run() {
+        $totalCase = 0;
+        $passCase = 0;
+        $failCase = 0;
         foreach ($this->runBook['process'] as $controller) {
-            $controllerBaseInfo = $this->getControllerBaseInfo($controller['controller']);
+            $controllerName = (isset($controller['controller']))? $controller['controller']: $controller['name'];
+            $controllerBaseInfo = $this->getControllerBaseInfo($controllerName);
+            if (empty($controllerBaseInfo)) {
+                error_log("Mission controller " . $controllerName);
+                continue;
+            }
             require_once $this->controllerBasePath . $controllerBaseInfo['filePath'];
-            $classname = $controller['controller']. "Controller";
+            $classname = $controllerName . "Controller";
             error_log("Run : " . $classname);
-            $control = new $classname($this->driver, $controller['param'], $this->config);
+            $control = new $classname($this->driver, $controller['params'], $this->config);
             $control->run();
         }
+        return $this->assert->getReport();
+        
+//        return array($res['totalNumber'], $res['passedNumber'], $res['failedNumber']);
     }
 
 
