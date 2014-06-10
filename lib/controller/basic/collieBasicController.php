@@ -32,7 +32,7 @@ class collieBasicController {
         //fetch image
         $name = time() . '.jpg';
         $imageFile = $this->config["PATH_CASE_RESULT"] . '/' . $name;
-        echo '<a href="'. $this->config["URL_CASE_RESULT"] .'/'. $name .'"><img src="'.$this->config["URL_CASE_RESULT"] .'/'. $name.'" class="screen-image" height="600"></a>';
+        echo UILogUtil::screenshot($this->config["URL_CASE_RESULT"] .'/'. $name);
         $this->driver->takeScreenshot($imageFile);
 
     }

@@ -14,13 +14,19 @@ class runner {
         $this->assert = $GLOBALS['testAssert'];
     }
 
-    public function startDriver() {/*{{{*/
+    public function startDriver($config) {/*{{{*/
         $capabilities = array(
-            WebDriverCapabilityType::BROWSER_NAME => 'firefox'
+            WebDriverCapabilityType::BROWSER_NAME => $config['browser']
         );
 
-        $seleniumUrl = 'http://localhost:4444/wd/hub';
+        if (empty($config['seleniumHost'])) {
+            $config['seleniumHost'] = 'http://localhost:4444/wd/hub';
+        }
+        $seleniumUrl = $config['seleniumHost'];
         $this->driver = RemoteWebDriver::create($seleniumUrl, $capabilities, 5000);
+        $manage = $this->driver->manage();
+        $window = $manage->window();
+        $window->maximize();
     }/*}}}*/
 
     public function closeDriver() {

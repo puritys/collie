@@ -51,17 +51,24 @@ echo <<<HTML
 <body>
 HTML;
 
-echo "<div style='font-size:36px; border-bottom:1px solid #cecece; padding-bottom: 15px;'>Start Test</div><pre style='white-space:pre-wrap'>";
 echo <<<HTML
-PATH: $dirname<br />
+<h1 class="page-header">Start Test</h1>
+<div class="bs-callout bs-callout-danger">
+    PATH: $dirname
+</div>
 HTML;
 flush();
 
 
 
 $testResult = $caseExe->runAutomationCase($res[0], json_decode($config[0]['config'], true), $dirname, "report");
+flush();
 
-print_r($testResult);
+echo UILogUtil::testResult($testResult['total'], $testResult['passed'], $testResult['failed']);
+echo UILogUtil::testReport($testResult);
+
+//print_r($testResult);
+
 //save log to report db.
 //$reportExe->insertReport(array(
 //    "executeId" => $reportGroupId, 

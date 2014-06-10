@@ -3,6 +3,7 @@ require_once "caseSql.php";
 //require_once 'arrowRunner.php';
 require_once PATH_PROJECT . "/lib/controller/basic/collieBasicController.php";
 require_once PATH_PROJECT . "/lib/collieBasic/runner.php";
+require_once PATH_PROJECT . "/lib/collieBasic/UILogUtil.php";
 
 class caseExe extends caseSql 
 {
@@ -74,7 +75,7 @@ class caseExe extends caseSql
         $runBook = array(
             "process" => $scenario,
         );
-        $runner = new runner(PATH_PROJECT . "/lib/controller/");      
+        $runner = new runner(PATH_PROJECT . "/lib/controller/");
 
 
         $runner->loadControllerList(PATH_CONTROLLER_LIST);
@@ -82,7 +83,7 @@ class caseExe extends caseSql
         $runner->loadConfig($config);
 
 
-        $runner->startDriver();
+        $runner->startDriver($config);
         $res = $runner->run();
         $runner->closeDriver();
 

@@ -1,10 +1,15 @@
 body {
-    padding: 20px;
+    padding: 10px;
 }
-img {
-    display: block;
-    margin: 0 auto;
+.screen-image-wrap {
+    width: 600px;
 }
+
+.screen-image {
+    height: 600px;
+    max-width: 700px;
+}
+
 .no_level, .level_1, .level_2, .level_3, .level_4, .level_5, .level_6, .level_7, .level_8, .level_9,.level_10 {
     color: #031E88;
 }
@@ -44,4 +49,48 @@ img {
 
 pre {
     background-color: #fff !important;
+}
+
+/******MISC**********/
+.passed-col {
+    color: #0a0;
+}
+
+.failed-col {
+    color: #a00;
+}
+
+/****bootstrap********/
+.bs-callout-danger {
+    background-color: #fdf7f7;
+    border-color: #d9534f;
+    margin: 20px 0;
+    padding: 20px;
+    border-left: 3px solid #eee;
+}
+.bs-example {
+    margin-left: 0;
+    margin-right: 0;
+    background-color: #fff;
+    border-width: 1px;
+    border-color: #ddd;
+    border-radius: 4px 4px 0 0;
+    border-style: solid;
+    box-shadow: none;
+    position: relative;
+    padding: 65px 15px 15px;
+    margin: 15px 15px 15px 0;
+}
+.bs-example p {
+    padding-left: 7px;
+}
+.bs-label:after {
+    content: attr(data-label);
+    position: absolute;
+    top: 15px;
+    left: 21px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #575656;
+    letter-spacing: 1px;
 }
