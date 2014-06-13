@@ -1,6 +1,8 @@
 <?php
 require_once PATH_CONTROLLER . '/basic/collieBasicController.php';
 class testContentController extends collieBasicController {
+    public $name = "Test assert";
+    public $type = "test";
     public $formParam = array (
         "type" => array(
             "label" => "Test type",

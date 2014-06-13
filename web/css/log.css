@@ -115,3 +115,11 @@ pre {
     color: #575656;
     letter-spacing: 1px;
 }
+.bs-controller {
+    margin: 20px 0;
+    padding: 20px;
+    border-left: 3px solid #EEE;
+    background-color: #F4F8FA;
+    border-color: #5BC0DE;
+}
+

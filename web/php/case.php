@@ -53,9 +53,7 @@ HTML;
 
 echo <<<HTML
 <h1 class="page-header">Automation Test : ${case['title']}</h1>
-<div class="bs-callout bs-callout-danger">
-    ${case['content']}
-</div>
+<h2>${case['content']}</h2>
 
 <p>
     The Result Path: $dirname

@@ -24,7 +24,7 @@ if ($allowController !== true) {
 }
 
 
-require_once PATH_CONTROLLER . '/' . $file;
+require_once $file;
 $controllerName .= 'Controller';
 $controller = new $controllerName();
 

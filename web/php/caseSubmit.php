@@ -17,7 +17,8 @@ $category = basicUtil::filterInput($_POST['category']);
 $referer = html_entity_decode(basicUtil::filterInput($_POST['referer']));
 
 
-
+$i = 0;
+$index = $_POST['index'];
 foreach ($descriptor['scenario'] as &$controller) {
     $name = $controller['name'];
     $params = array();
@@ -26,16 +27,17 @@ foreach ($descriptor['scenario'] as &$controller) {
         $con = new $conSetting['classname']("", "", "");
         $form = $con->formParam;
         foreach($form as $key => $v) {
-            $fieldName = $name . '_' . $key;
+            $fieldName = $name. '_' . $index[$i] . '_' . $key;
             $value = basicUtil::filterInput($_POST[$fieldName]);
             $params[$key] = $value;
-        } 
+        }
         $controller['params'] = $params;
     } else {
         unset($controller);
     }
-
+    $i++;
 }
+
 
 foreach ($descriptor as $key ) {
     if ($key != "scenario") {

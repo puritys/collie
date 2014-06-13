@@ -58,4 +58,25 @@ HTML;
         return $report;
     }
 
+    static function startController($name) {
+        return <<<HTML
+        <div class="controller-wrap">
+            <div class="title bs-controller">Start Controller: $name</div>
+HTML;
+    }
+
+    static function endController() {
+        return <<<HTML
+        </div>
+HTML;
+
+    }
+
+    static function showLog($message, $level = 1) {
+        return <<<HTML
+        <p class="log-level-$level">$message</p>
+HTML;
+
+    }
+
 }

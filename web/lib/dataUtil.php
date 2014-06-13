@@ -110,6 +110,7 @@ class dataUtil
             $retval[] = array(
                 "name" => $key,
             );
+            $index++;
         }
         return $retval;
     }/*}}}*/

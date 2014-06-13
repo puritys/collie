@@ -18,6 +18,7 @@ class collieBasicController {
     public function run () {
         $this->beforeRun();
         $this->main($this->config, $this->param);
+        $this->endRun();
     }
 
     public function main($config, $param) {
@@ -25,7 +26,17 @@ class collieBasicController {
     }
 
     public function beforeRun () {
-
+        if (!empty($this->name)) {
+            echo UILogUtil::startController($this->name);
+        } else {
+            echo UILogUtil::startController("Start a new controller.");
+        }
+    }
+    public function endRun () {
+        if (empty($this->type) || $this->type != "test") {
+            $this->getScreen();
+        }
+        echo UILogUtil::endController();
     }
 
     public function getScreen() {
@@ -35,6 +46,10 @@ class collieBasicController {
         echo UILogUtil::screenshot($this->config["URL_CASE_RESULT"] .'/'. $name);
         $this->driver->takeScreenshot($imageFile);
 
+    }
+
+    public function showLog($message, $level = 1) {
+        echo UILogUtil::showLog($message, $level);
     }
 
     public function assertEquals($val1, $val2, $reason) {

@@ -7,6 +7,7 @@ YUI.add("advanceUI", function (Y) {
         var render, srcNode, controllerText, controllerData, key, controllerProfile;
         var i, n, controllerLen;
         srcNode = this.get('srcNode');
+        this.controllerIndex = 1;
         this.descObj = {"cr": []};
         this.main = srcNode.one('.main-wrap');
         this.config = new Y.ET.controllerConfig();
@@ -186,7 +187,7 @@ return true;
     };//}}}
 
     obj.getNewNode = function (config, param, configKey) {//{{{
-        var it, o ,select, row, value, valueNode, valueNodeWrap, controllerProfile, fieldName;
+        var it, o ,select, row, value, valueNode, valueNodeWrap, controllerProfile, fieldName, baseFieldName, indexNode;
         var wrap = document.createElement('div');
         var name = document.createElement('div');
         var titleWrap = document.createElement('div');
@@ -217,6 +218,14 @@ return true;
         titleWrap.appendChild(btnWrap);
         wrap.appendChild(titleWrap);
 
+        var baseFieldName = configKey + "_" + this.controllerIndex + "_";
+        indexNode = document.createElement('input');
+        indexNode.name = "index[]";
+        indexNode.value = this.controllerIndex;
+        indexNode.type = "hidden";
+        contentWrap.appendChild(indexNode);
+        this.controllerIndex++;
+
         for (pro in config) {
             it = config[pro];
             if (!it || !it.label) {continue;}
@@ -238,7 +247,7 @@ return true;
                 value = param[pro];
             }
 
-            fieldName = configKey + "_" + pro;
+            fieldName = baseFieldName +  pro;
             switch (it.type) {
                 case 'select':
                     select = document.createElement('select');

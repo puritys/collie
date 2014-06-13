@@ -1,6 +1,7 @@
 <?php
 require_once PATH_CONTROLLER . '/basic/collieBasicController.php';
 class openUrlController extends collieBasicController {
+    public $name = "To open a url";
     public $isSameUrl = true;
     public $formParam = array (
         "url" => array(
@@ -16,6 +17,7 @@ class openUrlController extends collieBasicController {
     );
     public function main ($config, $param) {
         $this->url = $this->param["url"];
+        $this->showLog("The url is \"" .$this->url."\"");
         $this->driver->get($this->url);
         $this->originalUrl = $this->driver->getCurrentURL();
 
@@ -31,7 +33,6 @@ class openUrlController extends collieBasicController {
     public function checkIsComplete () {
         $script = 'return document.readyState';
         $status = $this->driver->executeScript($script);
-        $this->getScreen();
         if ($status == "complete") {
             return true;
         }
