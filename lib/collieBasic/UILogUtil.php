@@ -39,8 +39,10 @@ HTML;
 HTML;
             }
             $report .= <<<HTML
-            <div class="test-report bs-example bs-label" data-label="Failed Test Report">
-                <div>
+            <div class="test-report">
+                <div class="title">
+                    <span class="glyphicon glyphicon-warning-sign"></span>Failed Test Report
+                </div>
                 <p>Total Failed Test Number is ${testResult['failed']}.</p>
                 <table class="table">
                     <tr>

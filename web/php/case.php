@@ -52,16 +52,22 @@ echo <<<HTML
 HTML;
 
 echo <<<HTML
-<h1 class="page-header">Start Test</h1>
+<h1 class="page-header">Automation Test : ${case['title']}</h1>
 <div class="bs-callout bs-callout-danger">
-    PATH: $dirname
+    ${case['content']}
 </div>
+
+<p>
+    The Result Path: $dirname
+</p>
 HTML;
+ob_flush();
 flush();
 
 
 
 $testResult = $caseExe->runAutomationCase($res[0], json_decode($config[0]['config'], true), $dirname, "report");
+ob_flush();
 flush();
 
 echo UILogUtil::testResult($testResult['total'], $testResult['passed'], $testResult['failed']);

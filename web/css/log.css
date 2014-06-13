@@ -59,7 +59,28 @@ pre {
 .failed-col {
     color: #a00;
 }
+.test-report {
+    margin-left: 0;
+    margin-right: 0;
+    background-color: #fff;
+    border-width: 1px;
+    border-color: #ddd;
+    border-radius: 4px 4px 0 0;
+    border-style: solid;
+    box-shadow: none;
+    position: relative;
+    padding: 10px 15px 15px;
+    margin: 15px 15px 15px 0;
+}
 
+.test-report .glyphicon-warning-sign {
+    color: #c00;
+    margin-right: 10px;
+}
+
+.test-report .title {
+    margin: 10px 0;
+}
 /****bootstrap********/
 .bs-callout-danger {
     background-color: #fdf7f7;
