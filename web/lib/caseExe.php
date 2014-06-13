@@ -90,14 +90,14 @@ class caseExe extends caseSql
         $total = $res['totalNumber'];
         $passed = $res['passedNumber'];
         $failed = $res['failedNumber'];
-        $failedLog = $res['failedLog'];
+//        $failedLog = $res['failedLog'];
 
         return array(
             "dirname" => $dirname,
             "total" => $total,
             "passed" => $passed,
             "failed" => $failed,
-            "failedLog" => $failedLog,
+            "result" => $res['testResult'],
         );
     }/*}}}*/
 

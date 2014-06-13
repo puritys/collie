@@ -77,10 +77,30 @@ pre {
     color: #c00;
     margin-right: 10px;
 }
-
-.test-report .title {
-    margin: 10px 0;
+.test-report .glyphicon-ok {
+    color: #090;
+    margin-right: 10px;
 }
+.test-report .title {
+    margin: 10px 0 25px 0;
+}
+
+.test-report-table .expected-col, .test-report-table .actual-col {
+    width: 220px;
+}
+.test-report-table .status-col {
+    width: 50px;
+}
+.actual-value {
+    overflow: auto;
+    max-height: 150px;
+    max-width: 300px;
+}
+.actual-log-value {
+    overflow: auto;
+    max-height: 250px;
+}
+
 /****bootstrap********/
 .bs-callout-danger {
     background-color: #fdf7f7;
