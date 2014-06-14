@@ -69,13 +69,13 @@ class caseExe extends caseSql
 
         $config['PATH_CASE_RESULT'] = $path;
         $config['URL_CASE_RESULT'] = URL_DIR_RUN .'/' . $dirname;
-
+        $logFile = $config['PATH_CASE_RESULT'] . '/log';
         $descriptor = json_decode($data['descriptor'], true);
         $scenario = $descriptor['scenario'];
         $runBook = array(
             "process" => $scenario,
         );
-        $runner = new runner(PATH_PROJECT . "/lib/controller/");
+        $runner = new runner(PATH_PROJECT . "/lib/controller/", $logFile);
 
 
         $runner->loadControllerList(PATH_CONTROLLER_LIST);
@@ -90,15 +90,24 @@ class caseExe extends caseSql
         $total = $res['totalNumber'];
         $passed = $res['passedNumber'];
         $failed = $res['failedNumber'];
-//        $failedLog = $res['failedLog'];
-
-        return array(
+        $testResult = array(
             "dirname" => $dirname,
             "total" => $total,
             "passed" => $passed,
             "failed" => $failed,
             "result" => $res['testResult'],
+            "logFile" => $logFile,
         );
+
+        $html = UILogUtil::testResult($total, $passed, $failed);
+        echo $html;
+        file_put_contents($logFile, $html, FILE_APPEND);
+
+        $html = UILogUtil::testReport($testResult);
+        echo $html;
+        file_put_contents($logFile, $html, FILE_APPEND);
+
+        return $testResult;
     }/*}}}*/
 
     public function createRunBook($data) {

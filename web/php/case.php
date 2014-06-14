@@ -53,7 +53,7 @@ HTML;
 
 echo <<<HTML
 <h1 class="page-header">Automation Test : ${case['title']}</h1>
-<h2>${case['content']}</h2>
+<p>${case['content']}</p>
 
 <p>
     The Result Path: $dirname
@@ -68,27 +68,24 @@ $testResult = $caseExe->runAutomationCase($res[0], json_decode($config[0]['confi
 ob_flush();
 flush();
 
-echo UILogUtil::testResult($testResult['total'], $testResult['passed'], $testResult['failed']);
-echo UILogUtil::testReport($testResult);
 
-//print_r($testResult);
 
 //save log to report db.
-//$reportExe->insertReport(array(
-//    "executeId" => $reportGroupId, 
-//    "caseId" => $id,
-//    "name" => $case['title'],
-//    "dirname" => $testResult['dirname'],
-//    "passed" => $testResult['passed'],
-//    "failed" => $testResult['failed'],
-//));
-//
-//$reportExe->updateReportGroup(array(
-//    "executeId" => $reportGroupId,
-//    "passed" => $testResult['passed'],
-//    "failed" => $testResult['failed'],
-//
-//));
+$reportExe->insertReport(array(
+    "executeId" => $reportGroupId, 
+    "caseId" => $id,
+    "name" => $case['title'],
+    "dirname" => $testResult['dirname'],
+    "passed" => $testResult['passed'],
+    "failed" => $testResult['failed'],
+));
+
+$reportExe->updateReportGroup(array(
+    "executeId" => $reportGroupId,
+    "passed" => $testResult['passed'],
+    "failed" => $testResult['failed'],
+
+));
 flush();
 
 echo <<<HTML
