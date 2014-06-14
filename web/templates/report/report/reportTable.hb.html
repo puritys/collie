@@ -1,0 +1,43 @@
+    <table class="report-list-wrap table table-striped">
+        <thead class="caption-wrap head">
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Test Result</th>
+        </tr>
+        </thead>
+
+        <tbody class="tbody">
+        {{#each report}}
+            <tr class="">
+                <td>{{case_id}}</td>
+                <td>{{name}}</td>
+                <td>
+                {{#if showReport}}
+                    {{#if isPass}}
+                        <span class="glyphicon glyphicon-ok green-light"></span>
+                    {{/if}}
+                    {{#if isPassSome}}
+                        <span class="glyphicon glyphicon-warning-sign yellow-light"></span>
+                    {{/if}}
+
+                    {{#if isFail}}
+                        <span class="glyphicon glyphicon-remove red-light"></span>
+                    {{/if}}
+                    {{#if isRunning}}
+                        <span class="green-light">Running</span>
+                    {{/if}}
+
+                    <!--a href="{{urlLastReport}}" target="_blank" class="btn btn-default">Read Log</a-->
+                {{else}}
+                    <span class="red-light">Waiting...</span>
+                {{/if}}
+                </td>
+
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+    <div class="page-wrap">
+        {{> ../../common/pages/pages.hb.html}}
+    </div>

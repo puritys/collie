@@ -93,7 +93,7 @@ class reportSql
             $sqlP = "select execute_id from " . $this->tbName_group . " $where $od limit $start, $limit";
             $sql = "select * from `" . $this->tbName_group ."` as a inner join ($sqlP) as b on a.execute_id = b.execute_id $od2 ";
             $st = $this->db->prepare($sql);
-            if (is_array($strs)) {
+            if (!empty($strs) && is_array($strs)) {
                 $i = 0;
                 foreach ($strs as $it) {
                     $st->bindValue(':search_'. $i, '%' . $it . '%', PDO::PARAM_STR);
