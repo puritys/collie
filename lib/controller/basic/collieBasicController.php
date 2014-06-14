@@ -6,13 +6,17 @@ class collieBasicController {
     protected $param;
     protected $driver;
     protected $config;
-
-    public function __construct($driver, $param, $config = array()) {
+    protected $logFile;
+    public function __construct($driver, $param, $config = array(), $logFile = "") {
         $this->param = $param;
         $this->config = $config;
         $this->driver = $driver;
         $this->testAssert = $GLOBALS['testAssert'];
 
+        if (!empty($logFile)) {
+            $this->logFile = $logFile;
+
+        }
     }
 
     public function run () {
@@ -27,29 +31,43 @@ class collieBasicController {
 
     public function beforeRun () {
         if (!empty($this->name)) {
-            echo UILogUtil::startController($this->name);
+            $html = UILogUtil::startController($this->name);
         } else {
-            echo UILogUtil::startController("Start a new controller.");
+            $html = UILogUtil::startController("Start a new controller.");
         }
+        echo $html;
+        $this->saveLog($html);
     }
     public function endRun () {
         if (empty($this->type) || $this->type != "test") {
             $this->getScreen();
         }
-        echo UILogUtil::endController();
+        $html = UILogUtil::endController();
+        echo $html;
+        $this->saveLog($html);
     }
 
     public function getScreen() {
         //fetch image
         $name = time() . '.jpg';
         $imageFile = $this->config["PATH_CASE_RESULT"] . '/' . $name;
-        echo UILogUtil::screenshot($this->config["URL_CASE_RESULT"] .'/'. $name);
+        $html = UILogUtil::screenshot($this->config["URL_CASE_RESULT"] .'/'. $name);
+        echo $html;
+        $this->saveLog($html);
         $this->driver->takeScreenshot($imageFile);
 
     }
 
     public function showLog($message, $level = 1) {
-        echo UILogUtil::showLog($message, $level);
+        $html = UILogUtil::showLog($message, $level);
+        echo $html;
+        $this->saveLog($html);
+    }
+
+    public function saveLog($html) {
+        if ($this->logFile) {
+            file_put_contents($this->logFile, $html, FILE_APPEND);
+        }
     }
 
     public function assertEquals($val1, $val2, $reason) {

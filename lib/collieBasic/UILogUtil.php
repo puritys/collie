@@ -30,23 +30,54 @@ HTML;
         $report = "";
         if ($testResult['failed'] > 0) {
             $failCase = "";
-            foreach ($testResult['failedLog'] as $actualValue) {
-                $failCase .= <<<HTML
+            foreach ($testResult['result'] as $result) {
+                if ($result['passed'] == false) {
+                    $actualValue = htmlspecialchars($result['actual']);
+                    $failCase .= <<<HTML
                     <tr>
-                        <td>xx</td><td class="passed-col"></td><td class="failed-col">$actualValue</td><td>xx</td>
+                        <td><div class="glyphicon glyphicon-warning-sign"></div></td><td>${result['expect']}</td><td><div class="actual-value">$actualValue</div></td><td class="failed-col">${result['reason']}</td>
                     </tr>
 
 HTML;
+                }
             }
             $report .= <<<HTML
             <div class="test-report">
                 <div class="title">
-                    <span class="glyphicon glyphicon-warning-sign"></span>Failed Test Report
+                    <span class="glyphicon glyphicon-warning-sign"></span>Failed Test Report (${testResult['failed']})
                 </div>
-                <p>Total Failed Test Number is ${testResult['failed']}.</p>
-                <table class="table">
+                <table class="table test-report-table">
                     <tr>
-                        <th>Test Name</th><th>Expect Value</th><th>Actual Value</th><th>Reason</th>
+                        <th class="status-col">Status</th><th class="expected-col">Expect Value</th><th class="actual-col">Actual Value</th><th>Reason</th>
+                    </tr>
+                    $failCase
+                </table>
+                </div>
+            </div>
+HTML;
+        }
+
+        if ($testResult['passed'] > 0) {
+            $failCase = "";
+            foreach ($testResult['result'] as $result) {
+                if ($result['passed'] == true) {
+                    $actualValue = htmlspecialchars($result['actual']);
+                    $failCase .= <<<HTML
+                    <tr>
+                        <td><div class="glyphicon glyphicon-ok"></div></td><td>${result['expect']}</td><td><div class="actual-value">$actualValue</div></td>
+                    </tr>
+
+HTML;
+                }
+            }
+            $report .= <<<HTML
+            <div class="test-report">
+                <div class="title">
+                    <span class="glyphicon glyphicon-ok"></span>Passed Test Report (${testResult['passed']})
+                </div>
+                <table class="table test-report-table">
+                    <tr>
+                        <th class="status-col">Status</th><th class="expected-col">Expect Value</th><th class="actual-col">Actual Value</th>
                     </tr>
                     $failCase
                 </table>

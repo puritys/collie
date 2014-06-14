@@ -24,27 +24,31 @@ class testContentController extends collieBasicController {
         $type = $param['type'];
         $expectContent = $param['content'];
         $contentToCompare = "";
+        $this->showLog("Test type is " . $type, 1);
+
         switch ($type) {
             case 'html':
-                $body = $this->driver->findElement(
+/*                $body = $this->driver->findElement(
                       WebDriverBy::cssSelector('body')
                 );
                 $contentToCompare = $body->getText();
+*/
+                $contentToCompare = $this->driver->executeScript("return document.body.innerHTML;");
 
                 $failedReason = 'The value you want is not in HTML source.';
                 $this->assertPartialEquals($expectContent, $contentToCompare, $failedReason);
                 break;
             case 'url':
-                $currentUrl = $this->driver->getCurrentUrl();
-
+                $contentToCompare = $currentUrl = $this->driver->getCurrentUrl();
                 $failedReason = 'This url is not what you want.';
-
                 $this->assertPartialEquals($expectContent, $currentUrl, $failedReason);
 
                 break;
 
 
         }
+        $this->showLog("Expected value is  \"<em>" . $expectContent ."</em>\"", 1);
+        $this->showLog("Test value is  <div class=\"actual-log-value\">" . htmlspecialchars($contentToCompare) . "</div>", 1);
 
     }
 

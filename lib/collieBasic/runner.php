@@ -9,9 +9,15 @@ class runner {
     public $controllerList;
     public $runBook;
     public $driver;
-    public function __construct($basePath) {
+    public $logFile;
+    public function __construct($basePath, $logFile = "") {
         $this->controllerBasePath = $basePath;
         $this->assert = $GLOBALS['testAssert'];
+        $this->logFile = $logFile;
+
+        if (!empty($logFile)) {
+            file_put_contents($this->logFile, "");
+        }
     }
 
     public function startDriver($config) {/*{{{*/
@@ -83,15 +89,14 @@ class runner {
                 error_log("Mission controller " . $controllerName);
                 continue;
             }
-            require_once $controllerBaseInfo['filePath'];//$this->controllerBasePath . $controllerBaseInfo['filePath'];
+            require_once $controllerBaseInfo['filePath'];
             $classname = $controllerName . "Controller";
-            error_log("Run : " . $classname);
-            $control = new $classname($this->driver, $controller['params'], $this->config);
+            //error_log("Run : " . $classname);
+            $control = new $classname($this->driver, $controller['params'], $this->config, $this->logFile);
             $control->run();
         }
         return $this->assert->getReport();
         
-//        return array($res['totalNumber'], $res['passedNumber'], $res['failedNumber']);
     }
 
 
