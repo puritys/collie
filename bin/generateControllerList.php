@@ -35,8 +35,12 @@ function getController($dir, &$controller = array()) {
         } else if (preg_match('/Controller\.php$/i', $file)) {
             if (preg_match('/collieBasicC/', $file)) continue; //It is basic class
             $name = preg_replace('/Controller\.php/', '', $file);
+            $classname = preg_replace('/\.php/', '', $file);
+            require_once $dir . '/' . $file;
+            $controllerObj = new $classname("", "", ""); 
             $controller[$name] = array(
                 "filePath" => $dir . '/' .$file,
+                "name" => $controllerObj->name,
             );
         }
     }

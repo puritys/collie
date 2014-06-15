@@ -11,7 +11,9 @@ class collieBasicController {
         $this->param = $param;
         $this->config = $config;
         $this->driver = $driver;
-        $this->testAssert = $GLOBALS['testAssert'];
+        if (isset($GLOBALS['testAssert'])) {
+            $this->testAssert = $GLOBALS['testAssert'];
+        }
 
         if (!empty($logFile)) {
             $this->logFile = $logFile;

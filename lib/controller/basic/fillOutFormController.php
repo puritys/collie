@@ -2,7 +2,7 @@
 
 require_once PATH_CONTROLLER . '/basic/collieBasicController.php';
 class fillOutFormController extends collieBasicController {
-
+    public $name = "Fill out the form";
     public $formParam = array (
         "form" => array(
             "label" => "Fill up form",

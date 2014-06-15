@@ -25,7 +25,7 @@ YUI.add("advanceUI", function (Y) {
                 for (key in configText) {
                     config = configText[key];
                     for (j = 0; j < controllerLen; j++) {
-                        if (key == controllerData['scenario'][j]['name']) {
+                        if (key == controllerData['scenario'][j]['id']) {
                             controllerProfile = controllerData['scenario'][j];
                           //  controllerProfile['name'] = key;
                         }
@@ -121,7 +121,8 @@ return true;
             param = {};
 
             scenario = {
-                name: controllerProfile['name']
+                name: controllerProfile['name'],
+                id: controllerProfile['id']
             };
 
             if (controllerProfile['type'] && controllerProfile['type'] == "test") {
@@ -160,17 +161,10 @@ return true;
         for (scenarioIndex = 0; scenarioIndex < len; scenarioIndex++) {
             it = scenario[scenarioIndex];
             if (!it['type']) it['type'] = "controller";
-            config = this.config.getConfig(it['name']);
+            config = this.config.getConfig(it['id']);
             this.append(config,
-                {controllerParam: it['params'], configKey: it['name']}
+                {controllerParam: it['params'], configKey: it['id']}
             );
-            /*this.addController({
-                file:  it['controller'].replace(/^form\//, ''),
-                id:    it['id'],
-                name:  it['name'],
-                type:  it['type'],
-                param: it['params']
-            }, config);*/
 
         }
     };//}}}
@@ -192,7 +186,8 @@ return true;
         var name = document.createElement('div');
         var titleWrap = document.createElement('div');
         var contentWrap = document.createElement('div');
-        controllerProfile = this.config.getControllerProfile(configKey)
+        controllerProfile = this.config.getControllerProfile(configKey);
+Y.log(controllerProfile);
         contentWrap.className = "form-horizontal content hidden";
         wrap.className = "desc-controller";
         wrap.setAttribute('data-config-key', configKey);

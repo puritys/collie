@@ -29,19 +29,18 @@ YUI.add("ET_controllerConfig", function (Y) {
         var url, data = {}, responseCallback;
         url = 'index.php?page=controllerFetchFormParam';
         data = {
-            name: args.name
+            id: args.id,
+            name: args.name,
         };
         if (args.type) data.type = args.type;
         responseCallback = Y.bind(this.fetchComplete, this);
-        y.ajax(url, data, responseCallback, {callback: callback, controllerParam: controllerParam, configKey: args.name});
+        y.ajax(url, data, responseCallback, {callback: callback, controllerParam: controllerParam, configKey: args.id});
     };
 
     obj.fetchComplete = function (resObj, form, args) {
         var config;
         config = resObj;
-//        this.data[args.configKey] = config;
         this.addConfig(args.configKey, config, form);
-        //this.controllerProfile[args.configKey] = form;
         
         args.callback(config, args);
     };

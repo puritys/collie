@@ -16,18 +16,17 @@ $category = basicUtil::filterInput($_POST['category']);
 
 $referer = html_entity_decode(basicUtil::filterInput($_POST['referer']));
 
-
 $i = 0;
 $index = $_POST['index'];
 foreach ($descriptor['scenario'] as &$controller) {
-    $name = $controller['name'];
+    $id = $controller['id'];
     $params = array();
-    if ($conSetting = $controllerExe->getControllerSetting($name)) {
+    if ($conSetting = $controllerExe->getControllerSetting($id)) {
         require_once $conSetting['filePath'];
         $con = new $conSetting['classname']("", "", "");
         $form = $con->formParam;
         foreach($form as $key => $v) {
-            $fieldName = $name. '_' . $index[$i] . '_' . $key;
+            $fieldName = $id. '_' . $index[$i] . '_' . $key;
             $value = basicUtil::filterInput($_POST[$fieldName]);
             $params[$key] = $value;
         }
@@ -37,7 +36,6 @@ foreach ($descriptor['scenario'] as &$controller) {
     }
     $i++;
 }
-
 
 foreach ($descriptor as $key ) {
     if ($key != "scenario") {

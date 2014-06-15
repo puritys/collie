@@ -108,7 +108,8 @@ class dataUtil
         $retval = array();
         foreach ($controller as $key => $val) {
             $retval[] = array(
-                "name" => $key,
+                "id" => $key,
+                "name" => $val['name'],
             );
             $index++;
         }

@@ -83,17 +83,26 @@ class runner {
         $passCase = 0;
         $failCase = 0;
         foreach ($this->runBook['process'] as $controller) {
+            $controllerId = (isset($controller['controller']))? $controller['controller']: $controller['id'];
             $controllerName = (isset($controller['controller']))? $controller['controller']: $controller['name'];
-            $controllerBaseInfo = $this->getControllerBaseInfo($controllerName);
+
+            $controllerBaseInfo = $this->getControllerBaseInfo($controllerId);
             if (empty($controllerBaseInfo)) {
                 error_log("Mission controller " . $controllerName);
                 continue;
             }
             require_once $controllerBaseInfo['filePath'];
-            $classname = $controllerName . "Controller";
+            $classname = $controllerId . "Controller";
             //error_log("Run : " . $classname);
             $control = new $classname($this->driver, $controller['params'], $this->config, $this->logFile);
-            $control->run();
+            try {
+                $control->run();
+            } catch (Exception $e) {
+                echo "has exception";
+                print_r($e);
+            }
+            ob_flush();
+            flush();
         }
         return $this->assert->getReport();
         

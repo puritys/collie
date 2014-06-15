@@ -12,7 +12,8 @@ class controllerExe // extends caseSql
         foreach ($this->controllerList as $cname => $val) {
             if ($name == $cname) {
                 $val['classname'] = $cname . 'Controller';
-                $val['filePath'] =  $val['filePath']; //PATH_CONTROLLER .'/'. $val['filePath'];
+                $val['filePath'] =  $val['filePath'];
+
                 return $val;
             }
         }
