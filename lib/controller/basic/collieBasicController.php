@@ -54,6 +54,7 @@ class collieBasicController {
         $html = UILogUtil::endController();
         echo $html;
         $this->saveLog($html);
+
     }
 
     public function getScreen() {

@@ -33,14 +33,17 @@ class postArticleController extends collieBasicController {
 
         $this->driver->executeScript('document.getElementById("content_ifr").contentDocument.body.innerHTML = "'.$param['content'].'";'); 
 
+        //$this->getScreen();
+
 
         $button = $this->driver->findElement(
             WebDriverBy::cssSelector('.button-primary')
         );
-        $this->getScreen();
+
         $button->click();
 
         $this->driver->wait(10, 500)->until(function ($driver) {
+
             $url = $driver->getCurrentURL();
             if (strpos($url, 'wp-admin/post.php') > 0) {
                 return true;
@@ -49,8 +52,10 @@ class postArticleController extends collieBasicController {
             }
         });
 
-         $this->showLog("Post finish url = " . $url, 'debug');
+        $this->showLog("Post finish url = " . $url, 'debug');
+
         if (!empty($param['postId_savedKey'])) {
+
             $this->showLog("Save the post id and the key is " . $param['postId_savedKey'], 'debug');
             $url = $this->driver->getCurrentURL();
             $RegExp = '/post=([0-9]+)/';
@@ -58,6 +63,7 @@ class postArticleController extends collieBasicController {
             if (isset($res[1])) {
                 $this->saveData($param['postId_savedKey'], $res[1]);
             }
+
         }
 
         return true;

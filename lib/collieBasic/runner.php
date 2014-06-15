@@ -92,23 +92,28 @@ class runner {
             $controllerName = (isset($controller['controller']))? $controller['controller']: $controller['name'];
 
             $controllerBaseInfo = $this->getControllerBaseInfo($controllerId);
+
             if (empty($controllerBaseInfo)) {
+
                 error_log("Mission controller " . $controllerName);
                 continue;
             }
+
             require_once $controllerBaseInfo['filePath'];
             $classname = $controllerId . "Controller";
             //error_log("Run : " . $classname);
             $control = new $classname($this->driver, $controller['params'], $this->config, $this->logFile);
             $control->setDB($this->db);
             try {
+
                 $control->run();
+
             } catch (Exception $e) {
-                echo "has exception";
+                error_log("has exception message = " . print_r($e,1));
                 print_r($e);
             }
-            ob_flush();
-            flush();
+
+
         }
         return $this->assert->getReport();
         
