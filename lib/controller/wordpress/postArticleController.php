@@ -13,6 +13,12 @@ class postArticleController extends collieBasicController {
             "label" => "Article content",
             "type" => "input",
         ),
+        "postId_savedKey" => array(
+            "label" => "The key to save Post Id",
+            "type" => "input",
+            "hint" => "If you need save the post id, then you should type a key to save post id",
+        ),
+
     );
     public function main ($config, $param) {
         $url = $config['host'] . '/wp-admin/post-new.php';
@@ -37,12 +43,22 @@ class postArticleController extends collieBasicController {
         $this->driver->wait(10, 500)->until(function ($driver) {
             $url = $driver->getCurrentURL();
             if (strpos($url, 'wp-admin/post.php') > 0) {
-                error_log("Document is complete");
                 return true;
             } else {
                 return false;
             }
         });
+
+         $this->showLog("Post finish url = " . $url, 'debug');
+        if (!empty($param['postId_savedKey'])) {
+            $this->showLog("Save the post id and the key is " . $param['postId_savedKey'], 'debug');
+            $url = $this->driver->getCurrentURL();
+            $RegExp = '/post=([0-9]+)/';
+            preg_match($RegExp, $url, $res);
+            if (isset($res[1])) {
+                $this->saveData($param['postId_savedKey'], $res[1]);
+            }
+        }
 
         return true;
     }

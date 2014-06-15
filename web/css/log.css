@@ -1,8 +1,9 @@
 body {
-    padding: 10px;
+    padding: 10px 10px 10px 30px;
 }
 .screen-image-wrap {
     width: 600px;
+    margin: 10px 0 20px 0;
 }
 
 .screen-image {

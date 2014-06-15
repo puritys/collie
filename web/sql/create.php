@@ -136,3 +136,18 @@ try {
     print_r($e);
 }
 
+
+$config = "
+    create table dataValue (
+        key_name varchar(30) not null,
+        value varchar(255) not null,
+        create_time datetime,
+        UNIQUE(key_name)
+    ) ENGINE=InnoDB;
+";
+try {
+    $result = $db->query($config);
+    print_r($result);
+} catch (Exception $e) {
+    print_r($e);
+}

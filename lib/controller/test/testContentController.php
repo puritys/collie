@@ -33,11 +33,8 @@ class testContentController extends collieBasicController {
 
         switch ($type) {
             case 'html':
-/*                $body = $this->driver->findElement(
-                      WebDriverBy::cssSelector('body')
-                );
-                $contentToCompare = $body->getText();
-*/
+                $this->showLog("To get the html source code and check the expected value is in the html or not.", 1);
+
                 $contentToCompare = $this->driver->executeScript("return document.body.innerHTML;");
 
                 $failedReason = 'The value you want is not in HTML source.';
@@ -50,6 +47,7 @@ class testContentController extends collieBasicController {
 
                 break;
             case 'selector':
+                $this->showLog("To find the element in html and get the text of element.", 1);
 
                 $elm = $this->driver->findElement(
                       WebDriverBy::cssSelector($param['selector'])

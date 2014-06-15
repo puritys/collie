@@ -75,7 +75,8 @@ class caseExe extends caseSql
         $runBook = array(
             "process" => $scenario,
         );
-        $runner = new runner(PATH_PROJECT . "/lib/controller/", $logFile);
+
+        $runner = new runner(PATH_PROJECT . "/lib/controller/", $logFile, $this->db);
 
 
         $runner->loadControllerList(PATH_CONTROLLER_LIST);

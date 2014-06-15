@@ -53,7 +53,8 @@ echo <<<HTML
 HTML;
 
 echo <<<HTML
-<h1 class="page-header">Automation Test : ${case['title']}</h1>
+<h1 class="page-header">Case Name : ${case['title']}</h1>
+Case Description;
 <p>$descript</p>
 
 <p>

@@ -89,10 +89,15 @@ HTML;
         return $report;
     }
 
-    static function startController($name) {
+    static function startController($name, $type="") {
+        if ($type == "test") {
+            $desc = "Execute Test: ";
+        } else {
+            $desc = "Execute Controller:";
+        }
         return <<<HTML
         <div class="controller-wrap">
-            <div class="title bs-controller">Start Controller: $name</div>
+            <div class="title bs-controller">$desc  $name</div>
 HTML;
     }
 

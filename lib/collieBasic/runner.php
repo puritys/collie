@@ -5,18 +5,23 @@ require_once PATH_PROJECT . '/lib/collieBasic/testAssert.php';
 $GLOBALS['testAssert'] = new testAssert();
 
 class runner {
+    private $db;
     public $controllerBasePath;
     public $controllerList;
     public $runBook;
     public $driver;
     public $logFile;
-    public function __construct($basePath, $logFile = "") {
+    public function __construct($basePath, $logFile = "", $db = "") {
         $this->controllerBasePath = $basePath;
         $this->assert = $GLOBALS['testAssert'];
         $this->logFile = $logFile;
 
         if (!empty($logFile)) {
             file_put_contents($this->logFile, "");
+        }
+
+        if (!empty($db)) {
+            $this->db = $db;
         }
     }
 
@@ -95,6 +100,7 @@ class runner {
             $classname = $controllerId . "Controller";
             //error_log("Run : " . $classname);
             $control = new $classname($this->driver, $controller['params'], $this->config, $this->logFile);
+            $control->setDB($this->db);
             try {
                 $control->run();
             } catch (Exception $e) {
