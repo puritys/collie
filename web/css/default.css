@@ -1,4 +1,9 @@
+/******* common ******/
+.footer {
+    background: #F5F5F5;
+}
 
+/*************/
 .panel-heading {
     font-size: 15px;
     font-weight: bold;
