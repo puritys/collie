@@ -54,6 +54,7 @@ class caseExe extends caseSql
     
     public function runAutomationCase($data, $config, $dirname, $reportDir = "", $readLog = true)
     {/*{{{*/
+        set_time_limit(60*60*2);
         if (empty($dirname)) { error_log("When try to run arrow, dirname is missing");return false;}
         if (empty($config)) { error_log("When try to run arrow, config is missing");return false;}
         if (empty($data)) { error_log("When try to run arrow, data is missing");return false;}
