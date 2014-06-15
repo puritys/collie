@@ -14,6 +14,11 @@ class testContentController extends collieBasicController {
             ),
             "hint" => "Select a type to be compared.",
         ),
+        "selector" => array(
+            "label" => "Selector",
+            "type"  => "input",
+            "hint" => "If you choose the type \"CSS Selector\", then you must enter the class name of element.",
+        ),
         "content" => array(
             "label" => "Exist Content",
             "type"  => "input",
@@ -42,6 +47,17 @@ class testContentController extends collieBasicController {
                 $contentToCompare = $currentUrl = $this->driver->getCurrentUrl();
                 $failedReason = 'This url is not what you want.';
                 $this->assertPartialEquals($expectContent, $currentUrl, $failedReason);
+
+                break;
+            case 'selector':
+
+                $elm = $this->driver->findElement(
+                      WebDriverBy::cssSelector($param['selector'])
+                );
+                $contentToCompare = $elm->getText();
+
+                $failedReason = 'Can not find value.';
+                $this->assertPartialEquals($expectContent, $contentToCompare, $failedReason);
 
                 break;
 

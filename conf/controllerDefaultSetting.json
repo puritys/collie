@@ -2,6 +2,8 @@
     "_comments": "This is the deafult settting of controller. ",
     "seleniumHost" : "http://localhost:4444/wd/hub",
     "browser": "firefox",
-    "host": "http://www.puritys.me",
-    "log": true
+    "host": "https://colliewp.wordpress.com",
+    "log": true,
+    "user1": "author999",
+    "user1_password": "Author123"
 }

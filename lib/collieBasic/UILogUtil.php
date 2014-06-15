@@ -6,7 +6,7 @@ class UILogUtil {
 
         return <<<HTML
 
-        <div class="screen-image-wrap"><a href="$url"><img src="$url" class="screen-image img-rounded" ></a></div>
+        <div class="screen-image-wrap"><a href="$url" target="_blank"><img src="$url" class="screen-image img-rounded" ></a></div>
 HTML;
     }
 

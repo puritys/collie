@@ -38,7 +38,8 @@ $reportGroupId = $reportExe->insertReportGroup(array(
     "job_id" => $case['case_id'],
 ));
 
-
+$descript = $case['content'];
+$descript = preg_replace('/[\n\r]/', '<br />', $descript);
 echo <<<HTML
 <!DOCTYPE html>
 <html>
@@ -53,7 +54,7 @@ HTML;
 
 echo <<<HTML
 <h1 class="page-header">Automation Test : ${case['title']}</h1>
-<p>${case['content']}</p>
+<p>$descript</p>
 
 <p>
     The Result Path: $dirname
