@@ -24,3 +24,7 @@ Collie support switching system setting to test different environment.
 * Apache
 
 
+## Install GuideLine
+mysql -h localhost -u xxx -p xxx
+create database collie;
+grant all on collie.* to 'collie'@'localhost' identified by 'collie';
