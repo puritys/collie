@@ -11,7 +11,7 @@ $controllerExe = new controllerExe($db);
 $action = basicUtil::filterInput($_POST['action']);
 $title = basicUtil::filterInput($_POST['title']);
 $content = basicUtil::filterInput($_POST['content']);
-$descriptor = json_decode($_POST['descriptor'], true);
+$descriptor = json_decode(trim(html_entity_decode($_POST['descriptor'])), true);
 $category = basicUtil::filterInput($_POST['category']);
 
 $referer = html_entity_decode(basicUtil::filterInput($_POST['referer']));

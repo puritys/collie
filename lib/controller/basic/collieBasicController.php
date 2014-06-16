@@ -43,8 +43,9 @@ class collieBasicController {
         } else {
             $html = UILogUtil::startController("Start a new controller.", $this->type);
         }
-        echo $html;
+        $this->renderHTML($html);
         $this->saveLog($html);
+
     }
 
     public function endRun () {
@@ -52,26 +53,29 @@ class collieBasicController {
             $this->getScreen();
         }
         $html = UILogUtil::endController();
-        echo $html;
+
+        $this->renderHTML($html);
         $this->saveLog($html);
 
-    }
+     }
 
     public function getScreen() {
         //fetch image
         $name = time() . '.jpg';
         $imageFile = $this->config["PATH_CASE_RESULT"] . '/' . $name;
         $html = UILogUtil::screenshot($this->config["URL_CASE_RESULT"] .'/'. $name);
-        echo $html;
-        $this->saveLog($html);
+
         $this->driver->takeScreenshot($imageFile);
+        $this->renderHTML($html);
+        $this->saveLog($html);
 
     }
 
     public function showLog($message, $level = 1) {
         $html = UILogUtil::showLog($message, $level);
-        echo $html;
+        $this->renderHTML($html);
         $this->saveLog($html);
+
     }
 
     public function saveLog($html) {
@@ -99,11 +103,13 @@ class collieBasicController {
         return true;
     }
 
-    public function getData($key, $expired = 0) {
-        $sql = "select * from dataValue where key_name=:key";
+    public function getData($key, $expired = 86400) {
+        $createTime = date("Y/m/d H:i:s", time() + $expired);
+
+        $sql = "select * from dataValue where key_name=:key and create_time <= :create_time";
         $st = $this->db->prepare($sql);
         $st->bindValue(':key', $key, PDO::PARAM_STR);
-        //$st->bindValue(':create_time', $createTime, PDO::PARAM_STR);
+        $st->bindValue(':create_time', $createTime, PDO::PARAM_STR);
         $st->execute();
         $ret = $st->fetchAll(PDO::FETCH_ASSOC);
         if (isset($ret[0]['value'])) {
@@ -111,6 +117,15 @@ class collieBasicController {
         } 
 
         return false;
+
+    }
+
+    public function renderHTML($html) {
+       if (!connection_aborted() ) {
+            echo $html;
+            @ob_flush();
+            @flush();
+        }
 
     }
 

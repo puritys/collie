@@ -1,3 +1,3 @@
 
 genList:
-	php ./bin/generateControllerList.php
+	php -dopen_basedir=/ ./bin/generateControllerList.php
