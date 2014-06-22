@@ -60,6 +60,15 @@ class deleteArticleController extends collieBasicController {
         $url = $config['host'] . '/wp-admin/edit.php?post_status=trash&post_type=post';
         $this->driver->get($url);
 
+        $this->driver->wait(10, 500)->until(function ($driver) {
+            $url = $driver->getCurrentURL();
+            if (strpos($url, 'wp-admin/edit.php?post_status=trash') > 0) {
+                return true;
+            } else {
+                return false;
+            }
+        });
+
         $selectorPost = '#post-'.$postId;
         $this->driver->executeScript('var d = document.querySelector("'.$selectorPost.' .row-actions"); d.style.visibility="visible";');
 

@@ -1,6 +1,7 @@
 <?php
-require_once "../lib/phpunit/php-webdriver/lib/__init__.php";
-require_once "../lib/phpunit/core/basic.php";
+$PATH = dirname(__FILE__);
+require_once $PATH . "/../../lib/phpunit/php-webdriver/lib/__init__.php";
+require_once $PATH . "/../../lib/phpunit/core/basic.php";
 require_once PATH_PROJECT . '/lib/collieBasic/testAssert.php';
 $GLOBALS['testAssert'] = new testAssert();
 
@@ -87,7 +88,11 @@ class runner {
         $totalCase = 0;
         $passCase = 0;
         $failCase = 0;
+//print_r($this->runBook['process']);exit(1);
         foreach ($this->runBook['process'] as $controller) {
+            if (empty($controller['id'])) {
+                continue;
+            }
             $controllerId = (isset($controller['controller']))? $controller['controller']: $controller['id'];
             $controllerName = (isset($controller['controller']))? $controller['controller']: $controller['name'];
 
@@ -101,18 +106,21 @@ class runner {
 
             require_once $controllerBaseInfo['filePath'];
             $classname = $controllerId . "Controller";
-            //error_log("Run : " . $classname);
+            error_log("Run : " . $classname);
             $control = new $classname($this->driver, $controller['params'], $this->config, $this->logFile);
             $control->setDB($this->db);
+            $classname = null; $controllerID = null;
             try {
-
                 $control->run();
+                //@ob_flush();
+                //@flush();
 
             } catch (Exception $e) {
+                $control->showLog("Program has exception, please fix it.", 1);
+                $control->getScreen();
                 error_log("has exception message = " . print_r($e,1));
                 print_r($e);
             }
-
 
         }
         return $this->assert->getReport();

@@ -71,60 +71,60 @@ header("location: index.php?page=categoryReport&reportGroupId=" . $reportGroupId
 flush();
 
 //Run Case (Fixme  background or crontab).
-$configId = basicUtil::filterInput($_COOKIE["user-setting"]);
-$configId = intval($configId);
-$configDB = new configExe($db);
-
-if (!empty($configId)) {
-    $config = $configDB->getConfig(array("id" => $configId));
-} else {
-    $config = $configDB->getConfig(array("pageSize" => 1));
-
-}
-
-$unRunReport = $reportExe->queryReport(array(
-    "executeId" => $reportGroupId, 
-));
-$n = count($unRunReport);
-
-$totalResult = array(
-    "passed" => 0,
-    "failed" => 0,
-);
-$readLog = false;
-for ($i = 0 ; $i < $n; $i++) {
-    $reportId = $unRunReport[$i]['report_id'];
-    $caseId = $unRunReport[$i]['case_id'];
-
-    //get Case
-    $case = $caseExe->getCase(array(
-        "id" => $caseId
-    ));
-
-    if (!isset($case[0])) {
-        error_log("unused id " . $caseId);
-        continue;
-    }
-
-    $case = $case[0];
-
-    $reportExe->updateReport(array(
-        "reportId" => $reportId,
-        "status" => "running",
-    ));
-   
-    $testResult = $caseExe->runAutomationCase($case, json_decode($config[0]['config'], true), $unRunReport[$i]['dirname'], "", $readLog);
-    $reportExe->updateReport(array(
-        "reportId" => $reportId,
-        "passed" => $testResult['passed'],
-        "failed" => $testResult['failed'],
-    ));
-    $totalResult['passed'] += intval($testResult['passed']);
-    $totalResult['failed'] += intval($testResult['failed']);
-    $reportExe->updateReportGroup(array(
-        "executeId" => $reportGroupId,
-        "passed" => $totalResult['passed'],
-        "failed" => $totalResult['failed'],
-    ));
-}
-
+//$configId = basicUtil::filterInput($_COOKIE["user-setting"]);
+//$configId = intval($configId);
+//$configDB = new configExe($db);
+//
+//if (!empty($configId)) {
+//    $config = $configDB->getConfig(array("id" => $configId));
+//} else {
+//    $config = $configDB->getConfig(array("pageSize" => 1));
+//
+//}
+//
+//$unRunReport = $reportExe->queryReport(array(
+//    "executeId" => $reportGroupId, 
+//));
+//$n = count($unRunReport);
+//
+//$totalResult = array(
+//    "passed" => 0,
+//    "failed" => 0,
+//);
+//$readLog = false;
+//for ($i = 0 ; $i < $n; $i++) {
+//    $reportId = $unRunReport[$i]['report_id'];
+//    $caseId = $unRunReport[$i]['case_id'];
+//
+//    //get Case
+//    $case = $caseExe->getCase(array(
+//        "id" => $caseId
+//    ));
+//
+//    if (!isset($case[0])) {
+//        error_log("unused id " . $caseId);
+//        continue;
+//    }
+//
+//    $case = $case[0];
+//
+//    $reportExe->updateReport(array(
+//        "reportId" => $reportId,
+//        "status" => "running",
+//    ));
+//   
+//    $testResult = $caseExe->runAutomationCase($case, json_decode($config[0]['config'], true), $unRunReport[$i]['dirname'], "", $readLog);
+//    $reportExe->updateReport(array(
+//        "reportId" => $reportId,
+//        "passed" => $testResult['passed'],
+//        "failed" => $testResult['failed'],
+//    ));
+//    $totalResult['passed'] += intval($testResult['passed']);
+//    $totalResult['failed'] += intval($testResult['failed']);
+//    $reportExe->updateReportGroup(array(
+//        "executeId" => $reportGroupId,
+//        "passed" => $totalResult['passed'],
+//        "failed" => $totalResult['failed'],
+//    ));
+//}
+//

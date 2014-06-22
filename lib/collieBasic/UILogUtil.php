@@ -110,7 +110,7 @@ HTML;
 
     static function showLog($message, $level = 1) {
         return <<<HTML
-        <p class="log-level-$level">$message</p>
+        <div class="log-text log-level-$level">$message</div>
 HTML;
 
     }

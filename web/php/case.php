@@ -61,14 +61,11 @@ Case Description;
     The Result Path: $dirname
 </p>
 HTML;
-ob_flush();
-flush();
-
+//@ob_flush();
+//@flush();
 
 
 $testResult = $caseExe->runAutomationCase($res[0], json_decode($config[0]['config'], true), $dirname, "report");
-ob_flush();
-flush();
 
 
 
@@ -88,7 +85,6 @@ $reportExe->updateReportGroup(array(
     "failed" => $testResult['failed'],
 
 ));
-flush();
 
 echo <<<HTML
 </pre>

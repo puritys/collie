@@ -61,8 +61,9 @@ class testContentController extends collieBasicController {
 
 
         }
-        $this->showLog("Expected value is  \"<em>" . $expectContent ."</em>\"", 1);
-        $this->showLog("Test value is  <div class=\"actual-log-value\">" . htmlspecialchars($contentToCompare) . "</div>", 1);
+        $this->showLog("Expected value is  \"<span class=\"test-expected-log-value\">" . $expectContent ."</span>\"", 1);
+        $actual = htmlspecialchars($contentToCompare);
+        $this->showLog("<div class=\"test-actual-log-title\">Actual value is  </div><div class='test-actual-log-value'>" . $actual . "</div>", 1);
 
     }
 

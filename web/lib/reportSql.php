@@ -143,6 +143,12 @@ class reportSql
             $st = $this->db->prepare($sql);
             $st->bindValue(':id', $args['reportId'], PDO::PARAM_INT);
             $st->execute();
+        } else if (isset($args['status'])) {
+            $sql = "select * from %s where status=:status";
+            $sql = sprintf($sql, $this->tbName);
+            $st = $this->db->prepare($sql);
+            $st->bindValue(':status', $args['status'], PDO::PARAM_STR);
+            $st->execute();
 
         } else {
             $where = "";
@@ -239,6 +245,10 @@ class reportSql
 
     public function updateReport($args) 
     {
+        if (empty($args['reportId'])) {
+            return "";
+        }
+
         $sql = "update ". $this->tbName . " set `passed_case_num` = :passed, `failed_case_num`=:failed, `status`=:status where report_id = :reportId";
         $this->db->beginTransaction();
 
@@ -258,7 +268,7 @@ class reportSql
             } else if ($args['failed'] > 0) {
                 $st->bindValue(':status', 'failed', PDO::PARAM_STR);
             } else {
-                $st->bindValue(':status', 'none', PDO::PARAM_STR);
+                $st->bindValue(':status', 'failed', PDO::PARAM_STR);
             }
 
         }
@@ -269,16 +279,30 @@ class reportSql
 
     public function updateReportGroup($args) 
     {
-        $sql = "update ". $this->tbName_group . " set `passed_case_num` = :passed, `failed_case_num`=:failed where execute_id = :executeId";
-        $this->db->beginTransaction();
+        if (empty($args['executeId'])) {
+            return "";
+        }
+        if (isset($args['add_passed'])) {
+            $sql = "update ". $this->tbName_group . " set `passed_case_num` = `passed_case_num` + :passed, `failed_case_num` = `failed_case_num` + :failed where execute_id = :executeId";
+            $this->db->beginTransaction();
 
-        $st = $this->db->prepare($sql);
-        $st->bindValue(':executeId', $args['executeId'], PDO::PARAM_INT);
-        $st->bindValue(':passed', $args['passed'], PDO::PARAM_INT);
-        $st->bindValue(':failed', $args['failed'], PDO::PARAM_INT);
+            $st = $this->db->prepare($sql);
+            $st->bindValue(':executeId', $args['executeId'], PDO::PARAM_INT);
+            $st->bindValue(':passed', $args['add_passed'], PDO::PARAM_INT);
+            $st->bindValue(':failed', $args['add_failed'], PDO::PARAM_INT);
 
+        } else {
+            $sql = "update ". $this->tbName_group . " set `passed_case_num` = :passed, `failed_case_num`=:failed where execute_id = :executeId";
+            $this->db->beginTransaction();
+
+            $st = $this->db->prepare($sql);
+            $st->bindValue(':executeId', $args['executeId'], PDO::PARAM_INT);
+            $st->bindValue(':passed', $args['passed'], PDO::PARAM_INT);
+            $st->bindValue(':failed', $args['failed'], PDO::PARAM_INT);
+        }
         $st->execute();
         $this->db->commit();
+
     }
 
     public function removeCase($args) 
