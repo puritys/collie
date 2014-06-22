@@ -1,7 +1,10 @@
 <div class="module-report">
 
 <div class="panel panel-default">
-    <div class="panel-heading">Category [{{reportName}}] Executed Report</div>
+    <div class="panel-heading">
+        The report of "<em>{{reportName}}</em>" executing
+        <p class="hint">(PS: Run this group by system crond.)</p>
+    </div>
     <div class="report-number">
         Total Tests: {{total}} , Passed: Tests <span class="green-light">{{passed}}</span> , Failed Tests: <span class="red-light">{{failed}}</span>
     </div>
