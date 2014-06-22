@@ -9,6 +9,9 @@
         Total Tests: {{total}} , Passed: Tests <span class="green-light">{{passed}}</span> , Failed Tests: <span class="red-light">{{failed}}</span>
     </div>
     <div class="case-table-wrap">  
+        {{#if chart}}
+            <img src="{{chart}}" class="img-chart"/>
+        {{/if}}
         {{> reportTable.hb.html}}
     </div>
 </div>

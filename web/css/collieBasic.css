@@ -230,3 +230,9 @@ body {
     border-bottom: 1px solid #efefef;
     font-weight: bold;
 }
+
+.module-report .img-chart {
+    width: 350px;
+    margin: 0 auto;
+    display: block;
+} 
