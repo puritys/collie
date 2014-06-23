@@ -25,6 +25,7 @@ class webDriverBasic {
                 }
             }
 
+            $elm->clear();
             $elm->sendKeys($value);
         }
 
