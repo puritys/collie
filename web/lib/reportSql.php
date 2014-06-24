@@ -286,7 +286,7 @@ class reportSql
         if (empty($args['executeId'])) {
             return "";
         }
-        if (isset($args['add_passed'])) {
+        if (isset($args['add_passed']) || isset($args['add_failed'])) {
             $sql = "update ". $this->tbName_group . " set `passed_case_num` = `passed_case_num` + :passed, `failed_case_num` = `failed_case_num` + :failed where execute_id = :executeId";
             $this->db->beginTransaction();
 

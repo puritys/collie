@@ -18,8 +18,15 @@ class configSql
             $args['order'] = "create_time:desc";
         }
 
+        if (isset($args['name'])) {
+            $sql = "select * from %s where name=:name";
+            $sql = sprintf($sql, $this->tbName);
+            $st = $this->db->prepare($sql);
+            $st->bindValue(':name', $args['name'], PDO::PARAM_STR);
 
-        if (isset($args['id'])) {
+            $st->execute();
+
+        } else if (isset($args['id'])) {
             $sql = "select * from %s where config_id=:id";
             $sql = sprintf($sql, $this->tbName);
             $st = $this->db->prepare($sql);

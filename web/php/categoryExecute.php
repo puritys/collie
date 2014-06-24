@@ -4,15 +4,21 @@ require_once PATH_WEB . "/lib/categoryExe.php";
 require_once PATH_WEB . "/lib/caseCategoryExe.php";
 require_once PATH_WEB . "/lib/reportExe.php";
 
+$configDB = new configExe($db);
 $configId = cookieHandler::get('user-setting');
 $categoryId = basicUtil::filterInput($_GET['id']);
-if (empty($configId)) {
-    echo "Missing setting";
-    exit(1);
+$configName = basicUtil::filterInput($_GET['settingName']);
+if (!empty($configName)) {
+    $config = $configDB->getConfig(array("name" => $configName));
+} else {
+    if (empty($configId)) {
+        echo "Missing setting";
+        exit(1);
+    }
+
+    $config = $configDB->getConfig(array("id" => $configId));
 }
 
-$configDB = new configExe($db);
-$config = $configDB->getConfig(array("id" => $configId));
 if (empty($config)) {
     echo "Unused setting id.";
     exit(1);
