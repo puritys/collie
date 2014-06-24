@@ -213,8 +213,11 @@ class reportSql
     public function insertReport($args) 
     {/*{{{*/
         $createTime = date("Y/m/d H:i:s", time());
+        if (empty($args['configId'])) {
+            $args['configId'] = 0;
+        }
 
-        $sql = "insert into %s (`name`, `dirname`, `execute_id`, `case_id`, `status`, `create_time`, `passed_case_num`, `failed_case_num`) values (:name, :dirname, :execute_id, :caseId, :status, :createTime, :passed_case_num, :failed_case_num)";
+        $sql = "insert into %s (`name`, `dirname`, `execute_id`, `case_id`, `status`, `create_time`, `passed_case_num`, `failed_case_num`, `config_id`) values (:name, :dirname, :execute_id, :caseId, :status, :createTime, :passed_case_num, :failed_case_num, :config_id)";
         $sql = sprintf($sql, $this->tbName);
         $this->db->beginTransaction();
 
@@ -226,6 +229,7 @@ class reportSql
 
         $st->bindValue(':passed_case_num', $args['passed'], PDO::PARAM_STR);
         $st->bindValue(':failed_case_num', $args['failed'], PDO::PARAM_STR);
+        $st->bindValue(':config_id', $args['configId'], PDO::PARAM_STR);
 
         $st->bindValue(':createTime', $createTime, PDO::PARAM_STR);
         if ($args['failed'] == 0 && $args['passed'] > 0) {

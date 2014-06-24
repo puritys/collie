@@ -108,6 +108,7 @@ $config = "
         status enum('passed', 'failed', 'some_failed', 'none', 'running'),
         passed_case_num int,
         failed_case_num int,
+        config_id int,
         PRIMARY KEY (report_id)
     ) ENGINE=InnoDB;
 ";

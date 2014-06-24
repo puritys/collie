@@ -4,8 +4,19 @@ require_once PATH_WEB . "/lib/categoryExe.php";
 require_once PATH_WEB . "/lib/caseCategoryExe.php";
 require_once PATH_WEB . "/lib/reportExe.php";
 
-
+$configId = cookieHandler::get('user-setting');
 $categoryId = basicUtil::filterInput($_GET['id']);
+if (empty($configId)) {
+    echo "Missing setting";
+    exit(1);
+}
+
+$configDB = new configExe($db);
+$config = $configDB->getConfig(array("id" => $configId));
+if (empty($config)) {
+    echo "Unused setting id.";
+    exit(1);
+}
 
 $caseExe = new caseExe($db);
 $reportExe = new reportExe($db);
@@ -26,6 +37,7 @@ if ($n <= 0) {
 $catData = $categoryExe->queryCategory(array(
     "id" => $categoryId
 ));
+
 if (!isset($catData[0])) { echo "Missing category"; exit(1);}
 
 $dirname = 'category_' . time();
@@ -62,6 +74,7 @@ for ($i = 0; $i < $n; $i++) {
         "dirname" => $testDirname,
         "passed" => 0,
         "failed" => 0,
+        "configId" => $config[0]['config_id'],
     ));
 
 }

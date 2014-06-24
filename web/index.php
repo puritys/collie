@@ -1,6 +1,7 @@
 <?php
 require_once "config.php";
 require_once "lib/basicUtil.php";
+require_once "lib/cookieHandler.php";
 
 
 ini_set('date.timezone', TIMEZONE);

@@ -18,18 +18,24 @@ $reportExe = new reportExe($db);
 //$configId = intval($configId);
 $configDB = new configExe($db);
 
-if (!empty($configId)) {
-    $config = $configDB->getConfig(array("id" => $configId));
-} else {
-    $config = $configDB->getConfig(array("pageSize" => 1));
-
-}
 
 $runningReport = $reportExe->queryReport(array(
     "status" => "running", 
 ));
 
 if (count($runningReport) > 1) {
+    //skip too old report.
+    $caseRunningExpiredSeconds = 3600;
+    foreach ($runningReport as $case) {
+        $time = strtotime($case['create_time']);
+        if ($time < (time() - $caseRunningExpiredSeconds)) {
+            $reportExe->updateReport(array(
+                "reportId" => $case['report_id'],
+                "status" => "failed",
+            ));
+
+        }
+    }
     error_log("Some casees were running now. Waiting for it.");
     exit(1);
 }
@@ -53,6 +59,8 @@ for ($i = 0, $j = 0 ; $i < $n && $j < 5; $i++) {
     $reportId = $unRunReport[$i]['report_id'];
     $caseId = $unRunReport[$i]['case_id'];
     $reportGroupId = $unRunReport[$i]['execute_id'];
+
+    $config = $configDB->getConfig(array("id" => $unRunReport[$i]['config_id']));
 
     //get Case
     $case = $caseExe->getCase(array(

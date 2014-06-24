@@ -19,13 +19,17 @@ $menu[] = array("name" => "Readme", "link" => URL_HOME . "/index.php?page=readme
 
 
 $configDB = new configExe($db);
-$configs = $configDB->getConfig(array("order" => "config_id:ASC"));
-$configs = dataUtil::configToHandlebar($configs);
+$configsRaw = $configDB->getConfig(array("order" => "config_id:ASC"));
+$configs = dataUtil::configToHandlebar($configsRaw);
 
-if (isset($_COOKIE['user-setting'])) {
-    $selectConfigId = basicUtil::filterInput($_COOKIE['user-setting']);
+$userSetting = cookieHandler::get('user-setting');
+if (!empty($userSetting)) {
+    $selectConfigId = basicUtil::filterInput($userSetting);
 } else {
     $selectConfigId = "";
+    if (isset($configsRaw[0]['config_id'])) {
+        cookieHandler::set('user-setting', $configsRaw[0]['config_id']);
+    }
 }
 
 $n = count($configs);
