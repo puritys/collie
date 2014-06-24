@@ -120,7 +120,8 @@ class runner {
                 $control->getScreen();
                 error_log("has exception message = " . print_r($e,1));
                 print_r($e);
-                exit(1);
+                $control->assertEquals(true, false, 'Exception Happen.');
+                break;
             }
 
         }
