@@ -26,7 +26,7 @@ $data['reportName'] = $reportGroup['name'];
 $data['passed'] = $reportGroup['passed_case_num'];
 $data['failed'] = $reportGroup['failed_case_num'];
 $data['total'] = $reportGroup['passed_case_num'] + $reportGroup['failed_case_num'];
-
+$data['createTime'] = preg_replace('/\-/', '/', $reportGroup['create_time']);
 
 $reportList = $reportExe->queryReport(array(
     "executeId" => $reportGroupId, 
@@ -45,6 +45,7 @@ for ($i = 0; $i < $n; $i++) {
 
 
 if (!empty($reportGroup['passed_case_num']) || !empty($reportGroup['failed_case_num'])) {
+    // Draw Chart
     require_once PATH_WEB . '/lib/jpgraph/jpgraph.php';
     require_once PATH_WEB . '/lib/jpgraph/jpgraph_pie.php';
 

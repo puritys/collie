@@ -79,6 +79,10 @@ body {
 }
 
 /**********/
+.hint {
+    color: #999;
+}
+
 .page-wrap {
 
     border-top: 1px solid #DDD;
@@ -190,10 +194,12 @@ body {
     padding: 7px 0 0 225px;
 }
 .setting-selected-wrap {
+    position:absolute;
+    right: 0;
     text-align: right;
-    float: right;
     margin-bottom: 10px;
-    width: 220px;
+    width: 300px;
+    padding: 10px 6% 0 3%;
     zoom: 1;
 }
 
@@ -242,6 +248,10 @@ body {
     font-weight: bold;
 }
 
+.report-chart-wrap {
+    border-bottom: 1px solid #ccc;
+    margin: 0 0 10px 0;
+}
 .module-report .img-chart {
     width: 350px;
     margin: 0 auto;

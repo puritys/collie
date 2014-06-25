@@ -212,7 +212,11 @@ class reportSql
 
     public function insertReport($args) 
     {/*{{{*/
-        $createTime = date("Y/m/d H:i:s", time());
+        if (isset($args['createTime'])) {
+            $createTime = $args['createTime'];
+        } else {
+            $createTime = date("Y/m/d H:i:s", time());
+        }
         if (empty($args['configId'])) {
             $args['configId'] = 0;
         }
@@ -253,7 +257,13 @@ class reportSql
             return "";
         }
 
-        $sql = "update ". $this->tbName . " set `passed_case_num` = :passed, `failed_case_num`=:failed, `status`=:status where report_id = :reportId";
+        $sqlTime = "";
+
+        if ($args['createTime']) {
+            $args['createTime'] = intval($args['createTime']);
+            $sqlTime = ", `create_time` = \"" . date("Y/m/d H:i:s", $args['createTime']) . "\"";
+        }
+        $sql = "update ". $this->tbName . " set `passed_case_num` = :passed, `failed_case_num`=:failed, `status`=:status $sqlTime where report_id = :reportId";
         $this->db->beginTransaction();
 
         $st = $this->db->prepare($sql);

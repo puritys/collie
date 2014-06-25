@@ -3,7 +3,8 @@
         <tr>
             <th>#</th>
             <th>Case Name</th>
-            <th>Report</th>
+            <th>Log</th>
+            <th>Execute Time</th>
         </tr>
         </thead>
 
@@ -28,11 +29,12 @@
                         <span class="green-light">Running</span>
                     {{/if}}
 
-                    <a href="{{urlLastReport}}" target="_blank" class="btn btn-default">Read Log</a>
+                    <a href="{{urlLastReport}}" target="_blank" >Read Log</a>
                 {{else}}
                     <span class="red-light">Waiting...</span>
                 {{/if}}
                 </td>
+                <td>{{create_time}}</td>
 
             </tr>
         {{/each}}

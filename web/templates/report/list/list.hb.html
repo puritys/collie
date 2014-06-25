@@ -2,15 +2,18 @@
 
 <div class="panel panel-default">
     <div class="panel-heading">
-        The report of "<em>{{reportName}}</em>" executing
-        <p class="hint">(PS: Run this group by system crond.)</p>
+        <p>The report of "<em>{{reportName}}</em>" executing</p>
+        <p>Execute Time : {{createTime}}</p>
+        <p class="hint">(PS: Run all tests of category by system crond. Please make sure you have already set it.)</p>
     </div>
     <div class="report-number">
         Total Tests: {{total}} , Passed: Tests <span class="green-light">{{passed}}</span> , Failed Tests: <span class="red-light">{{failed}}</span>
     </div>
     <div class="case-table-wrap">  
         {{#if chart}}
-            <img src="{{chart}}" class="img-chart"/>
+            <div class="report-chart-wrap">
+                <img src="{{chart}}" class="img-chart"/>
+            </div>
         {{/if}}
         {{> reportTable.hb.html}}
     </div>

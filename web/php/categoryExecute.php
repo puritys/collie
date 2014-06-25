@@ -81,6 +81,7 @@ for ($i = 0; $i < $n; $i++) {
         "passed" => 0,
         "failed" => 0,
         "configId" => $config[0]['config_id'],
+        "createTime" => 0,
     ));
 
 }

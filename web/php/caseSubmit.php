@@ -27,7 +27,7 @@ foreach ($descriptor['scenario'] as &$controller) {
         $form = $con->formParam;
         foreach($form as $key => $v) {
             $fieldName = $id. '_' . $index[$i] . '_' . $key;
-            $value = basicUtil::filterInput(urldecode($_POST[$fieldName]));
+            $value = basicUtil::filterInput(html_entity_decode($_POST[$fieldName]));
             $params[$key] = $value;
         }
         $controller['params'] = $params;

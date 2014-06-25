@@ -77,6 +77,7 @@ for ($i = 0, $j = 0 ; $i < $n && $j < 5; $i++) {
     $reportExe->updateReport(array(
         "reportId" => $reportId,
         "status" => "running",
+        "createTime" => time(),
     ));
 
     $testResult = $caseExe->runAutomationCase($case, json_decode($config[0]['config'], true), $unRunReport[$i]['dirname'], "", false);
