@@ -32,3 +32,4 @@ create database collie;
 grant all on collie.* to 'collie'@'localhost' identified by 'collie';
 
 php   web/sql/create.php
+
