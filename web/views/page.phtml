@@ -1,10 +1,12 @@
 <?php
 
 $pjax = basicUtil::filterInput($_GET['pjax']);
-if ($pjax == 1) {
+
+if (!empty($pjax) && $pjax == 1) {
     echo $templateObj->renderLayout($body);
     exit(1);
 }
+
 ?><!DOCTYPE html>
 <html  lang="zh-tw">
 <head>
