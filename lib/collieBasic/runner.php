@@ -17,7 +17,7 @@ class runner {
         $this->assert = $GLOBALS['testAssert'];
         $this->logFile = $logFile;
 
-        if (!empty($logFile)) {
+        if (!empty($logFile) && !is_file($logFile)) {
             file_put_contents($this->logFile, "");
         }
 

@@ -35,7 +35,7 @@ body {
     padding: 20px 3%;
 }
 
-/*********************/
+/**********case ***********/
 
 .top-wrap .nav-tabs {
     border: 0px;
@@ -68,6 +68,17 @@ body {
 .case-table-wrap .table {
     margin-bottom: 0;
 }
+
+.case-list-wrap .col-name {
+    width: 250px;
+}
+
+.case-list-wrap .col-log {
+    width: 70px;
+    text-align: center;
+}
+
+/**********/
 .page-wrap {
 
     border-top: 1px solid #DDD;

@@ -43,7 +43,6 @@ if (!empty($job_type) && $job_type == "case") {
 
 $dirname = $report[0]['dirname'];
 
-//print_r($report);
 $logFile = PATH_DIR_RUN . "/" . $dirname . '/log';
 echo <<<HTML
 
@@ -56,8 +55,8 @@ echo <<<HTML
     <link href="css/log.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-<h1 >$reportName</h1>
-<h4 style="margin: 20px 0;">Log File Path: $logFile</h4>
+<div  class="hide-text">Log File Path: $logFile</div>
+
 HTML;
 
 @readFile($logFile);

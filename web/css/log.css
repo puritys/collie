@@ -42,6 +42,9 @@ pre {
     overflow: auto;
 }
 /******MISC**********/
+.hide-text {
+    color: white;
+}
 .passed-col {
     color: #0a0;
 }

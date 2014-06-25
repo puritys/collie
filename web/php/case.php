@@ -4,7 +4,7 @@ require_once PATH_WEB . "/lib/reportExe.php";
 require_once PATH_WEB . "/lib/configExe.php";
 
 
-$safeInputs = basicUtil::filterInputs('id');
+$safeInputs = basicUtil::filterInputs(id, 'GET');
 
 $caseExe = new caseExe($db);
 $reportExe = new reportExe($db);
@@ -20,10 +20,9 @@ $case = $res[0];
 $safeCookies = basicUtil::filterInputs('user-setting', 'cookie'); 
 
 $configDB = new configExe($db);
-
 if (!empty($safeCookies['user-setting'])) {
     $configId = $safeCookies['user-setting'];
-    $config = $configDB->getConfig(array("id" => $configId));
+    $config = $configDB->getConfig(array("id" => $safeCookies['user-setting']));
 } else {
     $config = $configDB->getConfig(array("pageSize" => 1));
 
@@ -52,20 +51,31 @@ echo <<<HTML
 <body>
 HTML;
 
-echo <<<HTML
-<h1 class="page-header">Case Name : ${case['title']}</h1>
-Case Description;
-<p>$descript</p>
+$settingName = $config[0]['name'];
+$date = date("Y/m/d H:i:s");
+$config = json_decode($config[0]['config'], true);
+$logFile = $caseExe->getLogFile($config, $dirname, "report");
 
-<p>
+$html = <<<HTML
+<h1 class="page-header">Case Name : ${case['title']}</h1>
+
+<p>Case Description: $descript</p>
+
+<p><b>Test Date: "$date"</b></p>
+<p>Your setting is "$settingName"</p>
+
+<p class="hide-text">
     The Result Path: $dirname
 </p>
 HTML;
-//@ob_flush();
-//@flush();
+echo $html;
+
+file_put_contents($logFile, $html, FILE_APPEND);
+
+@flush();
 
 
-$testResult = $caseExe->runAutomationCase($res[0], json_decode($config[0]['config'], true), $dirname, "report");
+$testResult = $caseExe->runAutomationCase($res[0], $config, $dirname, "report");
 
 
 

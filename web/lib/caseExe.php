@@ -51,6 +51,22 @@ class caseExe extends caseSql
 
     }/*}}}*/
 
+    public function getLogFile($config, $dirname, $reportDir) 
+    {
+        $path = $this->dirPath . "/" . $dirname;
+        if (!is_dir($path)) mkdir($path, 0755, true);
+
+        if (!empty($reportDir)) {
+            $dirname .= '/'. $reportDir;
+            $path = $path .'/'. $reportDir;
+            if (!is_dir($path)) mkdir($path);
+        }
+
+        $config['PATH_CASE_RESULT'] = $path;
+        $config['URL_CASE_RESULT'] = URL_DIR_RUN .'/' . $dirname;
+        $logFile = $config['PATH_CASE_RESULT'] . '/log';
+        return $logFile;
+    }
     
     public function runAutomationCase($data, $config, $dirname, $reportDir = "", $readLog = true)
     {/*{{{*/

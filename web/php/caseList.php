@@ -70,9 +70,17 @@ $caseListData = array(
         "pages" => $pages,
 );
 
-$body = array(
-    array("grid" => "u-1", "T" => "case/list/list.hb.html", "dataObject" => $caseListData),
-);
+$pjax = basicUtil::filterInput($_GET['pjax']);
+if ($pjax == 1) {
+    $body = array(
+        array("grid" => "u-1", "T" => "case/list/caseTable.hb.html", "dataObject" => $caseListData),
+    );
 
+} else {
 
+    $body = array(
+        array("grid" => "u-1", "T" => "case/list/list.hb.html", "dataObject" => $caseListData),
+    );
+
+}
 

@@ -2,13 +2,12 @@
         <thead class="caption-wrap head">
         <tr>
             <th>#</th>
-            <th>Case Name</th>
-            <th>Content</th>
-            <th>Descriptor</th>
+            <th class="col-name">Case Name</th>
+            <th>Description</th>
             <th>Edit</th>
-            <th>Run Case</th>
-            <th>Last Report</th>
-            <th>Remove</th>
+            <th>Execute</th>
+            <th class="col-log">Log</th>
+            <th>Delete</th>
         </tr>
         </thead>
 
@@ -18,8 +17,6 @@
                 <td>{{case_id}}</td>
                 <td>{{title}}</td>
                 <td >{{content}}</td>
-
-                <td><a href="{{urlDescriptor}}" target="_des" class="glyphicon glyphicon-book"></a></td>
                 <td><a href="{{urlEdit}}" class="btn-edit glyphicon glyphicon-pencil"></a></td>
                 <td><a href="{{urlCaseRun}}" target="_blank" class="btn btn-default">Run</a></td>
                 <td>
