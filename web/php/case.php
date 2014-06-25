@@ -17,7 +17,8 @@ $args = array(
 $res = $caseExe->getCase($args);
 $case = $res[0];
 
-$safeCookies = basicUtil::filterInputs('user-setting', 'cookie'); 
+$settingId = cookieHandler::get('user-setting');
+$safeCookies = basicUtil::filterInput($settingId); 
 
 $configDB = new configExe($db);
 if (!empty($safeCookies['user-setting'])) {
