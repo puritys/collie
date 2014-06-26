@@ -22,6 +22,7 @@ class webDriverBasic {
                     $elm = $this->getElm($parent . ' textarea[name=' . $key . ']');
                 } catch (Exception $e) {
                     error_log("Not Found!");
+                    throw $e;
                     continue;
                 }
             }
