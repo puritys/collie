@@ -1,6 +1,7 @@
 <?php
-
-$pjax = basicUtil::filterInput($_GET['pjax']);
+if (isset($_GET['pjax'])) {
+    $pjax = basicUtil::filterInput($_GET['pjax']);
+}
 
 if (!empty($pjax) && $pjax == 1) {
     echo $templateObj->renderLayout($body);

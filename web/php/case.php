@@ -18,12 +18,11 @@ $res = $caseExe->getCase($args);
 $case = $res[0];
 
 $settingId = cookieHandler::get('user-setting');
-$safeCookies = basicUtil::filterInput($settingId); 
+$settingId = basicUtil::filterInput($settingId); 
 
 $configDB = new configExe($db);
-if (!empty($safeCookies['user-setting'])) {
-    $configId = $safeCookies['user-setting'];
-    $config = $configDB->getConfig(array("id" => $safeCookies['user-setting']));
+if (!empty($settingId)) {
+    $config = $configDB->getConfig(array("id" => $settingId));
 } else {
     $config = $configDB->getConfig(array("pageSize" => 1));
 
@@ -44,6 +43,7 @@ echo <<<HTML
 <!DOCTYPE html>
 <html>
 <head>    
+    <title>Executing automation test</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="css/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>
@@ -60,7 +60,7 @@ $logFile = $caseExe->getLogFile($config, $dirname, "report");
 $html = <<<HTML
 <h1 class="page-header">Case Name : ${case['title']}</h1>
 
-<p>Case Description: $descript</p>
+<p>Case Description: <br />$descript</p>
 
 <p><b>Test Date: "$date"</b></p>
 <p>Your setting is "$settingName"</p>

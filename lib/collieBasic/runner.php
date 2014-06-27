@@ -35,7 +35,8 @@ class runner {
             $config['seleniumHost'] = 'http://localhost:4444/wd/hub';
         }
         $seleniumUrl = $config['seleniumHost'];
-        $this->driver = RemoteWebDriver::create($seleniumUrl, $capabilities, 5000);
+        $timeout = 10000;
+        $this->driver = RemoteWebDriver::create($seleniumUrl, $capabilities, $timeout);
         $manage = $this->driver->manage();
         $window = $manage->window();
         $window->maximize();
