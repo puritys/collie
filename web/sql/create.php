@@ -5,6 +5,7 @@ require dirname(__FILE__) . "/../config.php";
 //drop user root@'localhost'
 //create database collie;
 $db = new PDO('mysql:host=' . MYSQL_HOST .';dbname=' . MYSQL_DB, MYSQL_USER, MYSQL_PSWD);
+$lang = "UTF8";
 
 $case = "
     create table testCase (
@@ -15,7 +16,7 @@ $case = "
         create_time datetime,
         Index(create_time),
         PRIMARY KEY (case_id)
-    )ENGINE=InnoDB;
+    )ENGINE=InnoDB DEFAULT CHARSET=$lang;
 ";
 try {
     $result = $db->query($case);
@@ -31,7 +32,7 @@ $category = "
         name varchar(255) not null,
         create_time datetime,
         PRIMARY KEY (category_id)
-    )ENGINE=InnoDB;
+    )ENGINE=InnoDB DEFAULT CHARSET=$lang;
 ";
 try {
     $result = $db->query($category);
@@ -47,7 +48,7 @@ $config = "
         config blob,
         create_time datetime,
         PRIMARY KEY (config_id)
-    )ENGINE=InnoDB;
+    )ENGINE=InnoDB DEFAULT CHARSET=$lang;
 ";
 try {
     $result = $db->query($config);
@@ -88,7 +89,7 @@ $config = "
         passed_case_num int,
         failed_case_num int,
         PRIMARY KEY (execute_id)
-    ) ENGINE=InnoDB;
+    ) ENGINE=InnoDB DEFAULT CHARSET=$lang;
 ";
 try {
     $result = $db->query($config);
@@ -110,7 +111,7 @@ $config = "
         failed_case_num int,
         config_id int,
         PRIMARY KEY (report_id)
-    ) ENGINE=InnoDB;
+    ) ENGINE=InnoDB DEFAULT CHARSET=$lang;
 ";
 try {
     $result = $db->query($config);
@@ -128,7 +129,7 @@ $config = "
         create_time datetime,
         PRIMARY KEY (id),
         UNIQUE(case_id, category_id)
-    ) ENGINE=InnoDB;
+    ) ENGINE=InnoDB DEFAULT CHARSET=$lang;
 ";
 try {
     $result = $db->query($config);
@@ -144,7 +145,7 @@ $config = "
         value varchar(255) not null,
         create_time datetime,
         UNIQUE(key_name)
-    ) ENGINE=InnoDB;
+    ) ENGINE=InnoDB DEFAULT CHARSET=$lang;
 ";
 try {
     $result = $db->query($config);
