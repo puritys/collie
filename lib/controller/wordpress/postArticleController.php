@@ -23,6 +23,15 @@ class postArticleController extends collieBasicController {
     public function main ($config, $param) {
         $url = $config['host'] . '/wp-admin/post-new.php';
         $this->driver->get($url);
+        $this->driver->wait(10, 500)->until(function ($driver) {
+
+            $url = $driver->getCurrentURL();
+            if (strpos($url, 'post-new.php') > 0) {
+                return true;
+            } else {
+                return false;
+            }
+        });
 
 
         $elm = $this->driver->findElement(
@@ -31,11 +40,18 @@ class postArticleController extends collieBasicController {
  
         $elm->sendKeys($param['title']);
 
+        $this->driver->findElement(
+            WebDriverBy::cssSelector('#content-tmce')
+        )->click();
+
         $this->driver->executeScript('document.getElementById("content_ifr").contentDocument.body.innerHTML = "'.$param['content'].'";'); 
 
-        //$this->getScreen();
+//        $elm = $this->driver->findElement(
+//            WebDriverBy::cssSelector('textarea[name=content]')
+//        );
 
-
+//        $elm->sendKeys($param['content']);
+        usleep(1000 * 200);
         $button = $this->driver->findElement(
             WebDriverBy::cssSelector('.button-primary')
         );

@@ -118,9 +118,10 @@ class runner {
 
             } catch (Exception $e) {
                 $control->showLog("Program has exception, please fix it.", 1);
-                $control->getScreen();
                 error_log("has exception message = " . print_r($e,1));
                 print_r($e);
+
+                $control->getScreen();
                 $control->assertEquals(true, false, 'Exception Happen.');
                 break;
             }
