@@ -2,11 +2,16 @@
 
 class UILogUtil {
 
-    static function screenshot($url) {
+    static function screenshot($url, $msg = "Screenshot") {
 
         return <<<HTML
-
-        <div class="screen-image-wrap"><a href="$url" target="_blank"><img src="$url" class="screen-image img-rounded" ></a></div>
+        <div class="screen-image-wrap">
+            <div class="help-block">
+                <span class="glyphicon glyphicon-info-sign"></span>
+                $msg
+            </div>
+            <a href="$url" target="_blank"><img src="$url" class="screen-image img-rounded" ></a>
+        </div>
 HTML;
     }
 

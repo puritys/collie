@@ -53,17 +53,28 @@ echo <<<HTML
 HTML;
 
 $settingName = $config[0]['name'];
+$settingId = $config[0]['config_id'];
 $date = date("Y/m/d H:i:s");
 $config = json_decode($config[0]['config'], true);
 $logFile = $caseExe->getLogFile($config, $dirname, "report");
 
 $html = <<<HTML
-<h1 class="page-header">Case Name : ${case['title']}</h1>
+<h1 class="page-header">${case['title']}</h1>
 
-<p>Case Description: <br />$descript</p>
-
-<p><b>Test Date: "$date"</b></p>
-<p>Your setting is "$settingName"</p>
+<table class="table-display">
+<tr>
+    <td class="title">Description ：</td>
+    <td>$descript</td>
+</tr>
+<tr>
+    <td class="title">Executing Date ：</td>
+    <td>$date</td>
+</tr>
+<tr>
+    <td class="title">Environment Setting ：</td>
+    <td><a href="index.php?page=settingList&action=read&id=$settingId" target="_blank">$settingName</a></td>
+</tr>
+</table>
 
 <p class="hide-text">
     The Result Path: $dirname

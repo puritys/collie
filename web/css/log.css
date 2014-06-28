@@ -21,6 +21,18 @@ pre {
     background-color: #fff !important;
 }
 
+/**** case info *******/
+.table-display .title {
+    padding: 0 20px 30px 0;
+    vertical-align: top;
+    text-align: right;
+    font-weight: bold;
+}
+.table-display  td {
+    vertical-align: top;
+    padding: 0 0 30px 0;
+}
+
 /**** Testing *******/
 .test-expected-log-value, .test-actual-log-value {
     font-weight: bold;

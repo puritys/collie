@@ -41,7 +41,7 @@ class loginController extends collieBasicController {
 
         $driverBasic = new webDriverBasic($this->driver);
         $driverBasic->form($inputs);
-        $this->getScreen();
+        $this->getScreen("Fillout the form.");
 
         $elm = $this->driver->findElement(
           WebDriverBy::cssSelector('#wp-submit')

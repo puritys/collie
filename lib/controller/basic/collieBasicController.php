@@ -59,11 +59,11 @@ class collieBasicController {
 
      }
 
-    public function getScreen() {
+    public function getScreen($msg = "Screenshot") {
         //fetch image
         $name = time() . '.jpg';
         $imageFile = $this->config["PATH_CASE_RESULT"] . '/' . $name;
-        $html = UILogUtil::screenshot($this->config["URL_CASE_RESULT"] .'/'. $name);
+        $html = UILogUtil::screenshot($this->config["URL_CASE_RESULT"] .'/'. $name, $msg);
 
         $this->driver->takeScreenshot($imageFile);
         $this->renderHTML($html);

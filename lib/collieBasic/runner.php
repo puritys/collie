@@ -117,7 +117,7 @@ class runner {
                 //@flush();
 
             } catch (Exception $e) {
-                $control->showLog("Program has exception, please fix it.", 1);
+                $control->showLog("Program has exception, please fix it. Exception Message = " . print_r($e->getMessage(), 1), 1);
                 error_log("has exception message = " . print_r($e,1));
                 print_r($e);
 

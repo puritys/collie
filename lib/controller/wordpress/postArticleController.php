@@ -51,14 +51,15 @@ class postArticleController extends collieBasicController {
 //        );
 
 //        $elm->sendKeys($param['content']);
-        usleep(1000 * 200);
+
+        usleep(1000 * 1000);
         $button = $this->driver->findElement(
             WebDriverBy::cssSelector('.button-primary')
         );
 
         $button->click();
 
-        $this->driver->wait(10, 500)->until(function ($driver) {
+        $this->driver->wait(20, 500)->until(function ($driver) {
 
             $url = $driver->getCurrentURL();
             if (strpos($url, 'wp-admin/post.php') > 0) {
