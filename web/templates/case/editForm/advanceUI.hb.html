@@ -25,7 +25,7 @@
         <div class="form-group">
             <label for="content">Category</label>
             <div class="multiple-option-selection">
-                <select multiple="multiple" class="form-control" class="all-category" name="category">
+                <select multiple="multiple" class="form-control" class="all-category" name="category[]">
                 {{#if allCates}}
                 {{#each allCates}}
                     <option value="{{category_id}}" {{#if on}}selected{{/if}}>{{name}}</option>

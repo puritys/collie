@@ -52,7 +52,8 @@ class postArticleController extends collieBasicController {
 
 //        $elm->sendKeys($param['content']);
 
-        usleep(1000 * 1000);
+        usleep(1000 * 3000);
+        $this->getScreen("Before click submit button.");
         $button = $this->driver->findElement(
             WebDriverBy::cssSelector('.button-primary')
         );

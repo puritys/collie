@@ -64,11 +64,17 @@ if (!empty($reportGroup['passed_case_num']) || !empty($reportGroup['failed_case_
 
     // Create
     $p1 = new PiePlot($dataChart);
-    $graph->Add($p1);
 
+    $graph->Add($p1);
     $p1->ShowBorder();
     $p1->SetColor('black');
-    $p1->SetSliceColors(array('#1Ecc11','#cc1111'));
+    $p1->value->SetColor("#ffffff");
+    $p1->SetLabelPos(0.65);
+    $p1->SetSliceColors(array('#79C447','#FF5454'));
+
+    $p1->ExplodeAll(2);
+//    $p1->SetShadow();
+
     if (!is_dir(PATH_DIR_RUN . "/reportChart")) {
         mkdir(PATH_DIR_RUN . "/reportChart");
     }

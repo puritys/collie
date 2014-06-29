@@ -62,7 +62,7 @@ class caseCategorySql
     public function update($args) 
     {/*{{{*/
 
-
+error_log("cate = " . print_r($args,1));
         $category = $args['category'];
         if (!is_array($category)) $category = array($category);
         $caseId = $args['caseId'];

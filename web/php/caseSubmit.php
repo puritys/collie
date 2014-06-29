@@ -12,7 +12,11 @@ $action = basicUtil::filterInput($_POST['action']);
 $title = basicUtil::filterInput($_POST['title']);
 $content = basicUtil::filterInput($_POST['content']);
 $descriptor = json_decode(trim(html_entity_decode($_POST['descriptor'])), true);
-$category = basicUtil::filterInput($_POST['category']);
+$category = $_POST['category'];
+$n = count($category);
+for ($i = 0; $i < $n; $i++) {
+    $category[$i] = basicUtil::filterInput($category[$i]);
+}
 
 $referer = html_entity_decode(basicUtil::filterInput($_POST['referer']));
 
