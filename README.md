@@ -7,6 +7,9 @@ Collie use PHP and selenium to implement End-to-End test and support a easy UI t
 Collie develop many controller for you to use, you can arrange the sequence of controllers, and create your test procedure.
 No matter to be afraid of program, Collie give you a nice UI to edit your tests.
 
+### Demo Video
+https://www.youtube.com/watch?v=8SJ29Ljw-NE
+
 ### Switch Environment
 Do you have the problem to test alpha,beta,production environments. Collie is a good solution for you.
 Collie support switching system setting to test different environment.
