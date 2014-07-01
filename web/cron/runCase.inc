@@ -56,6 +56,8 @@ $totalResult = array(
 //print_r($unRunReport);
 
 for ($i = 0, $j = 0 ; $i < $n && $j < 5; $i++) {
+    $GLOBALS['testAssert'] = new testAssert();
+
     $reportId = $unRunReport[$i]['report_id'];
     $caseId = $unRunReport[$i]['case_id'];
     $reportGroupId = $unRunReport[$i]['execute_id'];
