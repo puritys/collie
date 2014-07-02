@@ -23,7 +23,7 @@ $runningReport = $reportExe->queryReport(array(
     "status" => "running", 
 ));
 
-if (count($runningReport) > 1) {
+if (count($runningReport) >= 1) {
     //skip too old report.
     $caseRunningExpiredSeconds = 3600;
     foreach ($runningReport as $case) {
