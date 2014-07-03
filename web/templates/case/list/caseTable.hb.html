@@ -15,7 +15,7 @@
         {{#each caseList}}
             <tr class="">
                 <td>{{case_id}}</td>
-                <td>{{title}}</td>
+                <td><a href="index.php?page=caseDetail&id={{case_id}}">{{title}}</a></td>
                 <td >{{content}}</td>
                 <td><a href="{{urlEdit}}" class="btn-edit glyphicon glyphicon-pencil"></a></td>
                 <td><a href="{{urlCaseRun}}" target="_blank" class="btn btn-default">Run</a></td>

@@ -63,6 +63,7 @@ for ($i = 0, $j = 0 ; $i < $n && $j < 5; $i++) {
     $reportGroupId = $unRunReport[$i]['execute_id'];
 
     $config = $configDB->getConfig(array("id" => $unRunReport[$i]['config_id']));
+    $settingName = $config[0]['name'];
 
     //get Case
     $case = $caseExe->getCase(array(
@@ -82,7 +83,10 @@ for ($i = 0, $j = 0 ; $i < $n && $j < 5; $i++) {
         "createTime" => time(),
     ));
 
-    $testResult = $caseExe->runAutomationCase($case, json_decode($config[0]['config'], true), $unRunReport[$i]['dirname'], "", false);
+    $config2 = json_decode($config[0]['config'], true);
+    $config2['configName'] = $settingName;
+
+    $testResult = $caseExe->runAutomationCase($case, $config2, $unRunReport[$i]['dirname'], "", false);
     $reportExe->updateReport(array(
         "reportId" => $reportId,
         "passed" => $testResult['passed'],

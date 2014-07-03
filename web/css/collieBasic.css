@@ -78,6 +78,11 @@ body {
     text-align: center;
 }
 
+/******* case deatil ******/
+.case-deatail-wrap .cate:before {
+}
+
+
 /**********/
 .hint {
     color: #999;

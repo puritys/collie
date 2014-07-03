@@ -1,0 +1,25 @@
+<div class="case-deatail-wrap">
+    <h1>{{title}}</h1>
+    <div class="category">
+        <ol class="breadcrumb">
+        {{#each cates}}
+            {{#if @first}}
+                <li class="cate">{{name}}</li>
+            {{else}}{{#if @last}}
+                <li class="cate active">{{name}}</li>
+            {{else}}
+                <li class="cate">{{name}}</li>
+            {{/if}}{{/if}}
+        {{/each}}
+        </ol>
+    </div>
+    <p class="description">{{content}}</p>
+    {{#if controllers}}
+    <div class="controller-wrap">
+        <p>Controller List</p>
+        {{#each controllers}}
+            <div>{{name}}</div>
+        {{/each}}
+    </div>
+    {{/if}}
+</div>

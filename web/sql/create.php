@@ -106,7 +106,7 @@ $config = "
         dirname varchar(55) not null,
         name varchar(255) not null,
         create_time datetime,
-        status enum('passed', 'failed', 'some_failed', 'none', 'running'),
+        status enum('passed', 'failed', 'some_failed', 'none', 'running', 'standby'),
         passed_case_num int,
         failed_case_num int,
         config_id int,

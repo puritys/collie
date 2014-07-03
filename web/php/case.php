@@ -56,6 +56,8 @@ $settingName = $config[0]['name'];
 $settingId = $config[0]['config_id'];
 $date = date("Y/m/d H:i:s");
 $config = json_decode($config[0]['config'], true);
+$config['configName'] = $settingName;
+
 $logFile = $caseExe->getLogFile($config, $dirname, "report");
 
 $html = <<<HTML

@@ -90,6 +90,7 @@ class collieBasicController {
     * So we could save the product id in database, and get it later.
     */
     public function saveData($key, $val) {
+        $key = $this->config['configName'] . '_' . $key;
         $createTime = date("Y/m/d H:i:s", time());
         $sql = "replace into dataValue(`key_name`, `value`, `create_time`) values(:key, :value, :create_time)";
         $st = $this->db->prepare($sql);
@@ -104,6 +105,8 @@ class collieBasicController {
     }
 
     public function getData($key, $expired = 86400) {
+        $key = $this->config['configName'] . '_' . $key;
+
         $createTime = date("Y/m/d H:i:s", time() + $expired);
 
         $sql = "select * from dataValue where key_name=:key and create_time <= :create_time";
