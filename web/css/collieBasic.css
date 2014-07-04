@@ -122,6 +122,28 @@ li:before {
 }
 
 /******* case deatil ******/
+.case-deatail-wrap .btn-test {
+    float: right;
+    margin-top: 8px;
+   
+} 
+.case-deatail-wrap .panel-heading:after {
+    content: "  ";
+    clear: both;
+}
+.case-deatail-wrap .title-wrap {
+    height: 50px;
+    padding-top: 0;
+    padding-bottom: 0px;
+}
+.case-deatail-wrap .title {
+    display: inline-block;
+    vertical-align: top; 
+    height: 100%;
+    padding-top: 12px;
+    font-size: 18px;
+}
+
 .case-deatail-wrap .description {
     white-space: pre;
     margin: 0 0 30px 0;
@@ -145,11 +167,19 @@ li:before {
     content: " / ";
     font-size: 12px;
 }
-
 .case-deatail-wrap .category .cate:nth-of-type(1):before {
     content: "";
 }
 
+.case-deatail-wrap .basic-info {
+    border: 1px solid #eee;
+    border-top: 0px;
+    padding: 0 15px;
+    margin: 20px 0 20px 0;
+}
+.case-deatail-wrap .panel-heading {
+    font-weight: bold;
+}
 /**********/
 .hint {
     color: #999;

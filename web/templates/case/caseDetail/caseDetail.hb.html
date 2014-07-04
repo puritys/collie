@@ -1,22 +1,26 @@
 <div class="case-deatail-wrap">
-    <h1>{{title}}</h1>
-    <div class="category">
-        <span class="header">Category:</span>
-        <ol>
-        {{#each cates}}
-            {{#if @first}}
-                <li class="cate">{{name}}</li>
-            {{else}}{{#if @last}}
-                <li class="cate active">{{name}}</li>
-            {{else}}
-                <li class="cate">{{name}}</li>
-            {{/if}}{{/if}}
-        {{/each}}
-        </ol>
-    </div>
-    <div class="description-wrap">
-        <div class="header">Description:</div>
-        <p class="description">{{content}}</p>
+    <div class="panel-default">
+        <div class="panel-heading title-wrap"><div class="title">{{title}}</div>  <a href="index.php?page=case&action=run&id={{caseId}}" class="btn btn-default btn-test" target="_blank">Start Test</a></div>
+        <div class="basic-info">
+            <div class="category">
+                <span class="header">Category:</span>
+                <ol>
+                {{#each cates}}
+                    {{#if @first}}
+                        <li class="cate">{{name}}</li>
+                    {{else}}{{#if @last}}
+                        <li class="cate active">{{name}}</li>
+                    {{else}}
+                        <li class="cate">{{name}}</li>
+                    {{/if}}{{/if}}
+                {{/each}}
+                </ol>
+            </div>
+            <div class="description-wrap">
+                <div class="header">Description:</div>
+                <p class="description">{{content}}</p>
+            </div>
+        </div>
     </div>
     {{#if controllers}}
     <div class="controller-wrap box">
@@ -31,4 +35,13 @@
         </ul>
     </div>
     {{/if}}
+
+    <div class="panel-default">
+        <div class="panel-heading">Testing History Reports</div>
+        <div class="basic-info">
+            continue;
+        </div>
+    </div>
+
+
 </div>
