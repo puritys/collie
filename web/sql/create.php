@@ -141,7 +141,7 @@ try {
 
 $config = "
     create table dataValue (
-        key_name varchar(30) not null,
+        key_name varchar(60) not null,
         value varchar(255) not null,
         create_time datetime,
         UNIQUE(key_name)

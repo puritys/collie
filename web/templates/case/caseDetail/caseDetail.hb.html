@@ -1,7 +1,8 @@
 <div class="case-deatail-wrap">
     <h1>{{title}}</h1>
     <div class="category">
-        <ol class="breadcrumb">
+        <span class="header">Category:</span>
+        <ol>
         {{#each cates}}
             {{#if @first}}
                 <li class="cate">{{name}}</li>
@@ -13,13 +14,21 @@
         {{/each}}
         </ol>
     </div>
-    <p class="description">{{content}}</p>
+    <div class="description-wrap">
+        <div class="header">Description:</div>
+        <p class="description">{{content}}</p>
+    </div>
     {{#if controllers}}
-    <div class="controller-wrap">
-        <p>Controller List</p>
+    <div class="controller-wrap box">
+        <div class="header">
+            <i class="glyphicon glyphicon-list"></i>
+            Controller List <span class="hint">(Sequence execute)</span>
+        </div>
+        <ul>
         {{#each controllers}}
-            <div>{{name}}</div>
+            <li>{{name}}</li>
         {{/each}}
+        </ul>
     </div>
     {{/if}}
 </div>
