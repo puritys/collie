@@ -1,6 +1,7 @@
 /******* common ******/
 body {
     font-size:14px;
+    font-family: 'Open Sans', '微軟正黑體';
 }
 .wrap {
     width: 100%;
@@ -50,7 +51,6 @@ body {
     font-weight: bold;
     font-size: 16px;
     line-height: 16px;
-    margin: 0 0 10px 0;
 }
 
 .nav li:before {
@@ -59,23 +59,23 @@ body {
 }
 
 ul {
-    padding-left: 25px;
+    padding-left: 30px;
 }
 li {
-    list-style-type: none;
+    list-style-type: circle;
 }
 
-li:before {
-    font-family: 'Glyphicons Halflings';
-    -webkit-font-smoothing: antialiased;
-    font-style: normal;
-    font-weight: normal;
-    line-height: 1;
-    content: "\e124";
-    font-size: 9px;
-    margin-left: -10px;
-    margin-right: 10px;
-}
+//li:before {
+//    font-family: 'Glyphicons Halflings';
+//    -webkit-font-smoothing: antialiased;
+//    font-style: normal;
+//    font-weight: normal;
+//    line-height: 1;
+//    content: "\e124";
+//    font-size: 9px;
+//    margin-left: -10px;
+//    margin-right: 10px;
+//}
 
 
 /**********case ***********/
@@ -147,6 +147,8 @@ li:before {
 .case-deatail-wrap .description {
     white-space: pre;
     margin: 0 0 30px 0;
+    padding-top: 10px;
+    line-height: 22px;
 }
 .case-deatail-wrap .category  {
     margin: 0 0 20px 0;
@@ -174,8 +176,8 @@ li:before {
 .case-deatail-wrap .basic-info {
     border: 1px solid #eee;
     border-top: 0px;
-    padding: 0 15px;
-    margin: 20px 0 20px 0;
+    padding: 20px 15px 0 15px;
+    margin: 0px 0 20px 0;
 }
 .case-deatail-wrap .panel-heading {
     font-weight: bold;
@@ -183,6 +185,8 @@ li:before {
 /**********/
 .hint {
     color: #999;
+    font-weight: normal;
+    font-size: 14px;
 }
 
 .page-wrap {
@@ -193,7 +197,14 @@ li:before {
 .setting-wrap {
     min-height: 300px;
 }
-
+.controller-wrap .header:before {
+    content: " ";
+    padding-left: 30px;
+    border-right: 1px solid white;
+    height: 41px;
+    margin-top: -12px;
+    position: absolute;
+}
 .controller-wrap .btn-add{
     float: right;
     width: 30px;
@@ -212,6 +223,7 @@ li:before {
     text-rendering: optimizespeed;
     /* Webkit: fixes text-rendering: optimizeLegibility */
 }
+
 .controller-wrap .search-controller input{
     width: 100%;
     margin-left: -30px;
@@ -229,6 +241,19 @@ li:before {
     word-spacing: normal;
     vertical-align: top;
     text-rendering: auto;
+}
+.controller-wrap ul {
+    padding-top: 15px;
+    padding-bottom: 10px;
+}
+.controller-wrap .glyphicon-list {
+    margin-right: 20px;
+}
+.controller-wrap .glyphicon-list:before{
+    font-size: 13px;
+}
+.controller-wrap .header span {
+    padding-left: 2px;
 }
 
 .controller-object-wrap {
