@@ -38,5 +38,7 @@ create database collie;
 
 grant all on collie.* to 'collie'@'localhost' identified by 'collie';
 
+git clone --recursive https://github.com/puritys/collie.git
+cd collie 
 php   web/sql/create.php
 
