@@ -1,5 +1,5 @@
 # Overview
-Collie is automated test framework, it is designed to improve a project to be more stable.
+Collie is a automated test framework, it is designed to improve a project to be more stable.
 
 Collie use PHP and selenium to implement End-to-End test and support a easy UI to controller your tests.
 
