@@ -44,3 +44,6 @@ cd collie
 
 php   web/sql/create.php
 
+You will need to generate the controller list. Execute the following command to generate it.
+
+gmake genList
