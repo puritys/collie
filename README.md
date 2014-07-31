@@ -39,11 +39,11 @@ create database collie;
 grant all on collie.* to 'collie'@'localhost' identified by 'collie';
 
 git clone --recursive https://github.com/puritys/collie.git
-
+<pre>
 cd collie 
-
 php   web/sql/create.php
+</pre>
 
 You will need to generate the controller list. Execute the following command to generate it.
 
-gmake genList
+<pre>gmake genList</pre>
