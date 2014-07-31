@@ -14,6 +14,9 @@ No matter to be afraid of program, Collie give you a nice UI to edit your tests.
 ### Demo Video
 https://www.youtube.com/watch?v=8SJ29Ljw-NE
 
+### The demo website
+http://collie.puritys.me/
+
 ### Switch Environment
 Do you have the problem to test alpha,beta,production environments. Collie is a good solution for you.
 Collie support switching system setting to test different environment.
@@ -47,3 +50,10 @@ php   web/sql/create.php
 You will need to generate the controller list. Execute the following command to generate it.
 
 <pre>gmake genList</pre>
+
+To create a directory to save the test log.
+<pre>
+cd collie/web
+mkdir runTmp
+chmod -R 777 runTmp (or change the owner to be apache runner)
+</pre>
