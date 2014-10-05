@@ -2,20 +2,24 @@
 require_once PATH_WEB . "/lib/dataUtil.php";
 require_once PATH_WEB . "/lib/configExe.php";
 require_once PATH_WEB . "/lib/handlebar/template.php";
+require_once PATH_WEB . "/php/lang.php";
+
 $templateObj = new template('/tmp/template_cache');
+if (!is_dir('/tmp/langcache')) mkdir('/tmp/langcache');
+
 
 $menu = array();
 
 $on = false; if ($page == "homepage")  $on = true;
-$menu[] = array("name" => "Home", "link" => URL_HOME . "/", "on" => $on);
+$menu[] = array("name" => L::home, "link" => URL_HOME . "/", "on" => $on);
 $on = false; if ($page == "caseList")  $on = true;
-$menu[] = array("name" => "Case List", "link" => URL_HOME . "/index.php?page=caseList", "on" => $on);
+$menu[] = array("name" => L::case_list, "link" => URL_HOME . "/index.php?page=caseList", "on" => $on);
 $on = false; if ($page == "category")  $on = true;
-$menu[] = array("name" => "Category", "link" => URL_HOME . "/index.php?page=category", "on" => $on);
+$menu[] = array("name" => L::category, "link" => URL_HOME . "/index.php?page=category", "on" => $on);
 $on = false; if (preg_match('/^setting/', $page))  $on = true;
-$menu[] = array("name" => "Setting", "link" => URL_HOME . "/index.php?page=settingList", "on" => $on);
+$menu[] = array("name" => L::env_setting, "link" => URL_HOME . "/index.php?page=settingList", "on" => $on);
 $on = false; if ($page == "readme")  $on = true;
-$menu[] = array("name" => "Readme", "link" => URL_HOME . "/index.php?page=readme", "on" => $on);
+$menu[] = array("name" => L::readme, "link" => URL_HOME . "/index.php?page=readme", "on" => $on);
 
 
 $configDB = new configExe($db);
@@ -48,6 +52,7 @@ if (empty($settingDefaultName) && isset($configs[0]['value'])) {
 $headerData = array(
     "menu" => $menu, 
     "setting" => $configs,
+    "languages" => $languages,
 );
 
 

@@ -3,21 +3,17 @@ require_once "config.php";
 require_once "lib/basicUtil.php";
 require_once "lib/cookieHandler.php";
 
-
 ini_set('date.timezone', TIMEZONE);
 
 $db = new PDO('mysql:host=' . MYSQL_HOST .';dbname=' . MYSQL_DB, MYSQL_USER, MYSQL_PSWD);
 //$db->exec("SET CHARACTER SET utf8");  // my.cnf: default-character-set=utf8
 
 $isRealUser = cookieHandler::get('isRealUser');
-
-
 if (empty($isRealUser)) {
     cookieHandler::set('isRealUser', 1);
     header('location: index.php');
     exit(1);
 }
-
 
 if (isset($_GET['page'])) {
     $page = basicUtil::filterInput($_GET['page']);

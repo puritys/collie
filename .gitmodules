@@ -1,3 +1,6 @@
 [submodule "lib/phpunit/php-webdriver"]
 	path = lib/phpunit/php-webdriver
 	url = git@github.com:puritys/php-webdriver.git
+[submodule "web/lib/i18n"]
+	path = web/lib/i18n
+	url = https://github.com/Philipp15b/php-i18n.git

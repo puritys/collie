@@ -1,8 +1,8 @@
 <div class="yui3-g setting-selected-wrap">
-    <form action="index.php?page=settingChange" method="get">
+    <form action="index.php?page=settingChange" method="get" class="yui3-u form-setting">
         <input type="hidden" name="page" value="settingChange" />
         <div class="yui3-u">
-            <div class="caption">Setting:</div>
+            <div class="caption">{{i18n "env_setting"}} :</div>
         </div>
         <div class="yui3-u">
             <select name="user-setting">
@@ -12,6 +12,18 @@
             </select>
         </div>
     </form>
+    <div class="yui3-u">
+        <div class="caption">{{i18n "lang"}} :</div>
+    </div>
+    <div class="yui3-u">
+        <form action="index.php" method="GET" class="form-lang">
+        <select name="lang">
+        {{#each languages}}
+            <option value="{{value}}" {{#if isSelected}} selected{{/if}}>{{name}}</option>
+        {{/each}}
+        </select>
+        </form>
+    </div>
 </div>
 <ul class="nav nav-tabs yui3-u-1">
     {{#each menu}}

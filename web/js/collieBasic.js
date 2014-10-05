@@ -11,7 +11,8 @@ YUI.add("collieBasic", function (Y) {
         var settingChange, deleteBtnClick, caseSearchClick, tmpNode;
         settingChange = Y.bind(this.settingChange, this);
         deleteBtnClick = Y.bind(this.deleteConfirm, this);
-        Y.one(".setting-selected-wrap").delegate('change', this.settingChange, 'select');
+        Y.one(".setting-selected-wrap").delegate('change', this.settingChange, '.form-setting select');
+        Y.one(".setting-selected-wrap").delegate('change', this.langChange, '.form-lang select');
 
         if (tmpNode = Y.one(".module-setting-list")) tmpNode.delegate("click", deleteBtnClick, ".btn-delete");
         if (tmpNode = Y.one(".module-case")) tmpNode.delegate("click", deleteBtnClick, ".btn-delete");
@@ -45,10 +46,15 @@ YUI.add("collieBasic", function (Y) {
         Y.one('.case-table-wrap').setHTML(res);
     };
 
+    obj.langChange = function (E) {
+        E.halt();
+        Y.one('.setting-selected-wrap .form-lang').submit();
+    };
+
     /**setting**********/
     obj.settingChange = function (E) {
         E.halt();
-        Y.one('.setting-selected-wrap form').submit();
+        Y.one('.setting-selected-wrap .form-setting').submit();
     };
 
     obj.deleteConfirm = function (E) {

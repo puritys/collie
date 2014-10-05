@@ -2,7 +2,7 @@
 
 class basicUtil {
 
-    static function filterInput($v) {
+    static function filterInput($v, $rule = "") {
         $v = strip_tags($v);
         $replaceStr = array(
             '"' => '&quot;',
@@ -12,6 +12,18 @@ class basicUtil {
             "'"=>"&#39;"
         );
         $v = strtr($v,$replaceStr);
+        switch ($rule) {
+            case 'a2z':
+                $v = preg_replace('/[^a-z]+/i', '', $v);
+                break;
+            case 'word':
+                $v = preg_replace('/[^a-z0-9_]+/i', '', $v);
+                break;
+            case 'variable':
+                $v = preg_replace('/[^a-z0-9_\-]+/i', '', $v);
+                break;
+
+        }
         return $v;
     }
 
@@ -39,5 +51,6 @@ class basicUtil {
         }
         return $res;
     }
+
 
 }

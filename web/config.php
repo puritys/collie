@@ -19,7 +19,7 @@ define('TIMEZONE', 'Asia/Taipei');
 
 // mysql
 define("MYSQL_HOST", "localhost");
-define("MYSQL_DB", "collie");
+define("MYSQL_DB", "collie_dev");
 define("MYSQL_USER", "collie");
 define("MYSQL_PSWD", "collie");
 

@@ -28,10 +28,9 @@ class template {
         $dir = $this->tmpDir . '/' . dirname($template);
         $cache_file = $dir . '/'. basename($template, '.html') . '.php';
 
-//error_log("cache_file = $cache_file");
-//error_log("basdir  = " . dirname($template));
         if (!$this->cache || !is_file($cache_file)) {
-            $php = LightnCandy::compile($html, Array('flags' => LightnCandy::FLAG_HANDLEBARSJS, "fileext" => "", "basedir" => dirname($template) . '/', 'blockhelpers' => Array('equal' => "template::help_equal") ));
+            $php = LightnCandy::compile($html, Array('flags' => LightnCandy::FLAG_HANDLEBARS, "fileext" => "", "basedir" => dirname($template) . '/', "helpers" => array("i18n" => "template::help_i18n") ));
+
             if (!is_dir($dir)) {
                 mkdir($dir, 0755, true);
             }
@@ -46,6 +45,12 @@ class template {
         if ($exec) {
             return $exec($data);
         }
+    }
+
+    public function help_i18n($context, $args) {
+        $fun = "L::${context[0]}";
+        eval('$v = ' .  $fun . ';');
+        return $v;
     }
 
     public function help_equal ($context, $args) {

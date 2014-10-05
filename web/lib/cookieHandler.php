@@ -6,7 +6,10 @@ class cookieHandler {
 
     static function get($key)
     {
-        return $_COOKIE[$key];
+        if (isset($_COOKIE[$key])) {
+            return $_COOKIE[$key];
+        }
+        return "";
     }
 
     static function set($key, $value)

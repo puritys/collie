@@ -325,9 +325,12 @@ li {
     right: 0;
     text-align: right;
     margin-bottom: 10px;
-    width: 300px;
+    width: 550px;
     padding: 10px 6% 0 3%;
     zoom: 1;
+}
+.setting-selected-wrap .form-setting {
+    margin: 0 20px 0 0;
 }
 
 .setting-selected-wrap ~ul {
