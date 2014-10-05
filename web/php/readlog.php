@@ -44,6 +44,7 @@ if (!empty($job_type) && $job_type == "case") {
 $dirname = $report[0]['dirname'];
 
 $logFile = PATH_DIR_RUN . "/" . $dirname . '/log';
+
 echo <<<HTML
 
 <!DOCTYPE html>

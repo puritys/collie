@@ -1,7 +1,9 @@
 <?php
 
 require_once "lib/i18n/i18n.class.php";
-$lang = basicUtil::filterInput($_GET['lang'], 'variable');
+if (isset($_GET['lang'])) {
+    $lang = basicUtil::filterInput($_GET['lang'], 'variable');
+}
 if (!empty($lang)) {
     cookieHandler::set('lang', $lang);
 } else {
