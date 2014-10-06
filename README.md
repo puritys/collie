@@ -60,7 +60,7 @@ chmod -R 777 runTmp (or change the owner to be apache runner)
 
 #### 中文 ####
 
-# Collie 是一個自動化測試工具，使用圖形化介面來管理、執行你的 functional test.
+### Collie 是一個自動化測試工具，使用圖形化介面來管理、執行你的 functional test.
 
 
 
