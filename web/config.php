@@ -1,4 +1,7 @@
 <?php
+if (is_file("config_local.php")) {
+    require "config_local.php";
+}
 
 define("PROJECT", "collie");  //project name
 
@@ -18,8 +21,9 @@ define('TIMEZONE', 'Asia/Taipei');
 
 
 // mysql
-define("MYSQL_HOST", "localhost");
-define("MYSQL_DB", "collie_dev");
-define("MYSQL_USER", "collie");
-define("MYSQL_PSWD", "collie");
-
+if (!defined('MYSQL_HOST')) {
+    define("MYSQL_HOST", "localhost");
+    define("MYSQL_DB", "collie");
+    define("MYSQL_USER", "collie");
+    define("MYSQL_PSWD", "collie");
+}
